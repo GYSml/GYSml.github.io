@@ -1,0 +1,532 @@
+<!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title>知识点.md</title></head>
+<body><h2>-&gt;C/C++总结&lt;-</h2>
+<h2>指针和引用的区别</h2>
+<ol><li>
+<p>非空区别:在任何情况下都不能使用指向空值的引用，指针可以为空</p>
+<ol><li>
+合法性区别:在使用引用之前不需要测试它的合法性。相反，指针则应该总被测试，防 止其为空</li>
+<li>
+可修改区别:指针可以被重新赋值以指向另一个不同的对象，引用在初始化之后不可以在改变</li>
+<li>
+应用区别:在以下情况下应该使用指针，一是考虑到存在不指向任何对象的可能(在这种情况下可以设置指针为空)，二是需要能够在不同的时候指向不同对象(可以改变指针指向)</li>
+</ol>
+</li>
+</ol>
+<h2>交换两个数，不使用第三个变量</h2>
+<ul><li>
+<p>算术运算</p>
+<p> void fun(int a,int b)
+ {</p>
+<pre>
+ a = b - a;
+ b = b - a;
+ a = b + a;
+</pre>
+<p> }</p>
+</li>
+<li>
+<p>指针地址运算</p>
+</li>
+</ul>
+<pre>
+void fun(int *a, int *b)
+{
+    if(a &lt; b){
+        a = (int *)(b - a);
+        b = (int *)(b - ((int) a &amp; 0x0000ffff));
+        a = (int *)(b + ((int) a &amp; 0x0000ffff));
+    }else{
+        b = (int *)(a - b);
+        a = (int *)(a - ((int) b &amp; 0x0000ffff));
+        b = (int *)(a + ((int) b &amp; 0x0000ffff));
+    }
+}
+</pre>
+<ul><li>
+位运算</li>
+</ul>
+<pre>
+void fun(int a, int b)
+{
+    a = a^b;
+    b = a^b;
+    a = a^b;
+}
+</pre>
+<ul><li>
+栈实现</li>
+</ul>
+<pre>
+void fun(int a,int b)
+{
+    stack s;
+    Push(s,a);
+    Push(s,b);
+    a = Pop(s);
+    b = Pop(s);
+}
+</pre>
+<h2>const与#define相比有什么不同</h2>
+<p>C++语言可以用const定义常量，也可以用#define定义常量,但是前者比后者有更多的优点：</p>
+<ul><li>
+<p>const常量有数据类型，而宏常量没有数据类型。编译器可以对前者进行类型安全检查，而对后者只进行字符替换，没有类型安全检查，并且在字符替换中可能会产生意想不到的错误(边际效应)</p>
+</li>
+<li>
+<p>有些集成化的调试工具可以对const常量进行调试，但不能对宏常量进行调试。在C++程序中只使用const常量而不使用宏常量，即const常量完全取代宏常量</p>
+</li>
+<li>
+<p>const定义的常量可被修改</p>
+<p> const int a = 10;
+ *((int *)&amp;a) = 12;</p>
+</li>
+</ul>
+<h2>循环队列</h2>
+<ul><li>
+入队和出队的操作</li>
+</ul>
+<pre>
+rear = (rear+1)%m;
+front = (front+1)%m;
+</pre>
+<ul><li>
+删除操作：front指针</li>
+<li>
+插入操作：rear指针</li>
+<li>
+判断队列已满</li>
+</ul>
+<pre>
+front == (rear+1)%m;
+</pre>
+<ul><li>
+<p>队列长度</p>
+<p> (rear-front+m)%m;</p>
+</li>
+</ul>
+<h2>union、struct、enum大小区别</h2>
+<ul><li>
+枚举enum：大小实质上就是整形</li>
+</ul>
+<pre>
+typedef enum{
+            ANUnknow,ANShape,ANData}ANDataType;
+sizeof(ANDataType) = 4;
+</pre>
+<ul><li>
+联合union：大小则以定义中最大的数据类型为准</li>
+</ul>
+<pre>
+union AAA{
+    double d;
+    int i;
+}
+sizeof(AAA) = 8;
+</pre>
+<ul><li>
+结构体struct：字节对齐原则</li>
+</ul>
+<pre>
+struct BBB{
+    double dd;
+    int i;
+}
+sizeof(BBB) = 16;//空结构体的大小为1字节
+</pre>
+<hr />
+<h2>编写类String的构造、析构、拷贝构造和赋值函数</h2>
+<p>类原型：</p>
+<pre>
+class String{
+    public:
+        String(const char *str = NULL);//普通构造函数
+        String(const String &amp;other);//拷贝构造函数
+        ~String(void);//析构函数
+        String &amp; operator =(const String &amp;other);//赋值函数
+    private:
+        char *m_data;
+};
+</pre>
+<ul><li>
+<p>普通构造函数</p>
+<p> String::String(const char *str)
+ {</p>
+<pre>
+ if(str == NULL)
+ {
+     m_data = new char[1];
+     *m_data = &#39;\0&#39;;
+ }
+ else{
+     int length = strlen(str);
+     m_data = new char[length+1];
+     strcpy(m_data, str);
+ }
+</pre>
+<p> }</p>
+<p> </p>
+</li>
+<li>
+<p>析构函数</p>
+</li>
+</ul>
+<pre>
+String::~String(void)
+{
+    delete [] m_data;
+}
+</pre>
+<ul><li>
+拷贝构造函数</li>
+</ul>
+<pre>
+String::String(const String &amp;other)
+{
+    int length = strlen(other.m_data);
+    m_data = new char[length+1];
+    if(m_data == NULL)
+    {
+        printf(&quot;申请内存失败\n&quot;);
+    }else{
+        strcpy(m_data, other.m_data);
+    }
+}
+</pre>
+<ul><li>
+赋值函数</li>
+</ul>
+<pre>
+String &amp; String::operator =(const String &amp;other)
+{
+    if(this == other)
+    {
+        return *this;
+        delete [] m_data;
+    }
+    int length = strlen(other.m_data);
+    m_data = new char[length+1];
+    if(m_data == NULL)
+    {
+        printf(&quot;申请内存失败\n&quot;);
+    }else{
+        strcpy(m_data,other.m_data);
+    }
+    return *this;
+}
+</pre>
+<h2>拷贝构造函数</h2>
+<p>使用场合：</p>
+<ul><li>
+新建一个类，并用另一个同类的对象对它初始化</li>
+<li>
+当函数参数为类对象时，在调用时需要将实参对象传给形参</li>
+</ul>
+<pre>
+extern void show(Circle cir);
+Circle cir1;
+show(cir1);
+</pre>
+<ul><li>
+当函数返回值是类对象时</li>
+</ul>
+<pre>
+extern Circle getCircle();
+Circle cir = getCircle();
+</pre>
+<h2>volatile(JD笔试题)</h2>
+<p>作用:作为指令关键字，确保本条指令不会因编译器的优化而省略，且要求每次直接读值
+一个定义为volatile的变量是说这变量可能会被意想不到地改变，这样，编译器就不会去假设这个变量的值了。精确地说就是，优化器在用到这个变量时必须每次都小心地重新读取这个变量的值，而不是使用保存在寄存器里的备份</p>
+<ul><li>
+一个参数既可以是const还可以是volatile吗？解释为什么？
+ 答：是的，一个例子是只读的状态寄存器。它是volatile因为它可能被意想不到地改变。它是const因为程序不应该试图去修改它。</li>
+<li>
+一个指针可以是volatile 吗？解释为什么？
+ 答:是的,尽管这并不很常见。一个例子是当一个中断服务子程序修改一个指向一个buffer的指针时</li>
+</ul>
+<h2>mutable的作用</h2>
+<p>在C++程序中，类里面的数据成员加上mutable后，修饰为const的成员变量，就可以修改它了</p>
+<h2>C++菱形继承问题(JD笔试题)</h2>
+<ul><li>
+什么是菱形继承
+假设我们有类B和类C，它们都继承了相同的类A。另外我们还有类D，类D通过多重继承机制继承了类B和类C</li>
+<li>
+产生的问题(二义性)
+问题是：因为Liger多重继承了Tiger和Lion类，因此Liger类会有两份Animal类的成员（数据和方法），Liger对象&quot;lg&quot;会包含Animal基类的两个子对象。
+所以，你会问Liger对象有两个Animal基类的子对象会出现什么问题？再看看上面的代码-调用&quot;lg.getWeight()&quot;将会导致一个编译错误。这是因为编译器并不知道是调用Tiger类的getWeight()还是调用Lion类的getWeight()。所以，调用getWeight方法是不明确的，因此不能通过编译。</li>
+<li>
+解决方案
+如果Lion类和Tiger类在分别继承Animal类时都用virtual来标注，对于每一个Liger对象，C++会保证只有一个Animal类的子对象会被创建</li>
+</ul>
+<pre>
+class Tiger : virtual public Animal { /* ... */ };
+</pre>
+<pre>
+class Lion : virtual public Animal { /* ... */ } 
+</pre>
+<p>因为Java不支持多继承，所以不会出现菱形继承问题。但是Java可以通过接口间接实现多重继承</p>
+<pre>
+Class Mule implements Horse,Donkey  
+{  
+  /* Horse和Donkey是接口*/  
+} 
+</pre>
+<hr />
+<h2>C++多线程</h2>
+<p></p>
+<ul><li>
+<p>线程的创建</p>
+<h1>include<pthread.h></h1>
+<p> void* say_hello(void* arg)
+ {</p>
+<pre>
+ cout&lt;&lt;&quot;Hello.....&quot;&lt;&lt;endl;
+</pre>
+<p> }
+ pthread_t tids;
+ int ret = pthread_creat(&amp;tips,NULL,say_hello,NULL);
+如果线程调用到函数在一个类中，那必须将该函数声明为静态函数函数
+因为静态成员函数属于静态全局区，线程可以共享这个区域，故可以各自调用</p>
+</li>
+<li>
+<p>在线程调用函数时传入参数</p>
+</li>
+</ul>
+<p>  <br/></p>
+<pre>
+void* say_hello(void* arg)
+{
+    int i = *( (int *)arg );//对传入的参数进行强制转换
+    cout&lt;&lt;&quot;Hello.....&quot;&lt;&lt;endl;
+}
+
+int ret = pthread_creat(&amp;tips,NULL,say_hello,(void *)&amp;i);
+</pre>
+<ul><li>
+使用pthread_join等待线程结束</li>
+</ul>
+<pre>
+pthread_join(tips,NULL);
+</pre>
+<p>  <br/></p>
+<ul><li>
+线程创建时属性参数的设置pthread_attr_t及join功能的使用</li>
+</ul>
+<pre>
+typedef struct
+{
+     int detachstate;   //线程的分离状态
+     int schedpolicy;   //线程调度策略
+     struct sched_param schedparam;   //线程的调度参数
+     int inheritsched; //线程的继承性 
+     int scope; //线程的作用域 
+     size_t guardsize; //线程栈末尾的警戒缓冲区大小 
+     int stackaddr_set; 
+     void * stackaddr; //线程栈的位置 
+}pthread_attr_t;
+</pre>
+<p>使用方法：</p>
+<pre>
+pthread_attr_t attr; //线程属性结构体，创建线程时加入的参数  
+pthread_attr_init( &amp;attr ); //初始化  
+pthread_attr_setdetachstate( &amp;attr, PTHREAD_CREATE_JOINABLE ); //是设置你想要指定线程属性参数，这个参数表明这个线程是可以join连接的join功能表示主程序可以等线程结束后再去做某事，实现了主程序和线程同步功能
+</pre>
+<h2>分别给出BOOL，int，float，指针变量 与“零值”比较的 if 语句（假设变量名为var）</h2>
+<ul><li>
+BOOL型变量</li>
+</ul>
+<pre>
+if(!var)
+</pre>
+<p> </p>
+<ul><li>
+<p>int型变量</p>
+<p> </p>
+<p> if(var==0)</p>
+</li>
+</ul>
+<ul><li>
+float型变量：</li>
+</ul>
+<pre>
+const float EPSINON = 0.00001;
+if ((x &gt;= - EPSINON) &amp;&amp; (x &lt;=EPSINON)
+</pre>
+<p>  <br/></p>
+<ul><li>
+指针变量</li>
+</ul>
+<pre>
+if(var==NULL)
+</pre>
+<p>  <br/></p>
+<h2>内存的分配方式有几种</h2>
+<ul><li>
+从静态存储区域分配:
+ 内存在程序编译的时候就已经分配好，这块内存在程序的整个运行期间都存在。例如全局变量</li>
+<li>
+在栈上创建:
+在执行函数时，函数内局部变量的存储单元都可以在栈上创建，函数执行结束时这些存储单元自动被释放。栈内存分配运算内置于处理器的指令集中，效率很高，但是分配的内存容量有限</li>
+<li>
+从堆上分配，亦称动态内存分配:
+程序在运行的时候用malloc或new申请任意多少的内存，程序员自己负责在何时用free或delete释放内存。动态内存的生存期由我们决定，使用非常灵活，但问题也最多。</li>
+</ul>
+<h2>内存操作</h2>
+<ul><li>
+给绝对地址进行赋值操作</li>
+</ul>
+<pre>
+1.法一：
+int *ptr;
+ptr = (int *)0x10000;
+*ptr = 1234;
+2.晦涩的方法是:(建议使用第一中)
+(unsigned int*)0x100000 = 1234;
+</pre>
+<ul><li>
+程序跳转到绝对地址执行</li>
+</ul>
+<pre>
+1.//首先要将0x100000强制转换成函数指针,即:
+(void (*)())0x100000
+//然后再调用它:
+*((void (*)())0x100000)();
+
+2.用typedef可以看得更直观些:
+typedef void(*)() voidFuncPtr;
+*((voidFuncPtr)0x100000)();
+</pre>
+<h2>利用位运算实现加法</h2>
+<pre>
+int Add(int a, int b)
+{
+    if(b == 0)
+        return a;
+    int sum,carry;
+    sum = a ^ b;
+    carry = (a &amp; b) &lt;&lt; 1;
+    return Add(sum, carry);
+}
+</pre>
+<h2>判断计算机是大端存储还是小端存储</h2>
+<pre>
+void checkCPU()
+{
+    int i = 0x11223344;
+    char *p;
+    p = (char *)&i;
+    if(*p == 0x44)
+    {
+        printf(&quot;小端存储\n&quot;);
+    }else{
+        printf(&quot;大端存储\n&quot;);
+    }
+}
+</pre>
+<hr />
+<h1>-&gt;数据结构&lt;-</h1>
+<hr />
+<h2>树的基本操作</h2>
+<ul><li>
+定义</li>
+</ul>
+<pre>
+typedef struct BNode  
+{  
+  char value; 
+  struct BNode *left;  
+  struct BNode *right;  
+} Node,*pNode,**ppNode; 
+</pre>
+<p> <br/></p>
+<ul><li>
+获取二叉树叶子总数</li>
+</ul>
+<pre>
+int GetLeafeNum(pNode root)  
+{  
+    if(root==NULL)  //空节点叶子数为0  
+    {  
+        return 0;  
+    }  
+    else if(root-&gt;left==NULL&amp;&amp;root-&gt;right==NULL)  
+    {  
+       return 1;  
+    }  
+    return GetLeafeNum(root-&gt;left)+GetLeafeNum(root-&gt;right);  
+}  
+</pre>
+<ul><li>
+获取二叉树的高度(左右子树最高高度+1)</li>
+</ul>
+<pre>
+int GetHeight(pNode root)  
+{  
+    if(root==NULL)  
+    {  
+        return 0;  
+    }  
+    // max(left,right)+1;  
+    return (GetHeight(root-&gt;left)&gt;=GetHeight(root-&gt;right)?(GetHeight(root-&gt;left)+1):(GetHeight(root-&gt;right)+1));  
+}  
+</pre>
+<p> </p>
+<ul><li>
+交换左右子树</li>
+</ul>
+<pre>
+void swap_tree(pNode root)  
+{  
+    if(root==NULL)  
+        return;  
+    else  
+    {  
+        pNode temp=root-&gt;left;  
+        root-&gt;left=root-&gt;right;  
+        root-&gt;right=temp;  
+        swap_tree(root-&gt;left);  
+        swap_tree(root-&gt;right);  
+    }  
+} 
+</pre>
+<h2>链表的基本操作</h2>
+<ul><li>
+定义</li>
+</ul>
+<pre>
+typedef struct student{
+    int data;
+    struct student *next;
+}node;
+</pre>
+<ul><li>
+单链表逆置</li>
+</ul>
+<pre>
+node *reverse(node *head)
+{
+    node *p1,*p2,*p3;
+    if(head == null || head-&gt;next == null)
+        return head;
+    p1 = head;
+    p2 = p1-&gt;next;
+    while(p2){
+        p3 = p2-&gt;next;
+        p2-&gt;next = p1;
+        p1 = p2;
+        p2 = p3;
+    }
+    head-&gt;next = NULL;
+    head = p1;
+    return head;
+}
+</pre>
+<p>  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/></p>
+</body>
+</html>
