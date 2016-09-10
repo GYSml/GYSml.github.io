@@ -1,16 +1,13 @@
-```
+---
 author: GuoYS
 layout: post
 title:  "Centos6.5下搭建web服务器/访问web项目"
 date:   2016-05-12 20:08:28 +0800
 categories: Linux
 tags: centos
-```
-
-- content
-
+---
+* content
   {:toc}
-
   这篇文章关于在centos下web项目环境的配置流程以及相关注意事项
 
   ​
