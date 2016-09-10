@@ -7,7 +7,7 @@ tags: debug
 author: GuoYS
 ---
 * content
-  {:toc}
+{:toc}
 
   ​
 
