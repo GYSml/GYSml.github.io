@@ -9,6 +9,8 @@ author: GuoYS
 * content
 {:toc}
 
+在win64下是没有debug程序的，主要说一下64位Win7使用debug程序的方法
+
 
 
 #WIN7 64为如何调出debug
