@@ -1,10 +1,10 @@
 ---
+author: GuoYS
 layout: post
 title:  "shell脚本-定时执行任务"
 date:   2016-05-12 20:08:28 +0800
 categories: Linux
 tags: centos
-author: GuoYS
 ---
 * content
   {:toc}
