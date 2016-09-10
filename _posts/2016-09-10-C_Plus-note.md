@@ -7,7 +7,7 @@ tags: C_Plus_Plus
 author: GuoYS
 ---
 * content
-  {:toc}
+{:toc}
   这里主要是一些关于在笔试面试中遇到的一些问题，在学习中总结，在总结中学习
 
 ## 指针和引用的区别 ##
