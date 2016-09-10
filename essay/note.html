@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang='en'>
 <head>
 <meta charset='utf-8'>
@@ -432,6 +432,8 @@ int main()
 但是string::npos作为string的成员函数的一个 长度参数 时，表示“ 直到字符串结束 （until the end of the string）</p><pre class='md-fences mock-cm' style='display:block;position:relative'>tmpname.replace(idx + 1, string::npos, &quot;xxx&quot;); //string::npos作为长度参数，表示直到字符串结束</pre><ul><li><p>将字符串内容反转  string::rbegin()/string::rend();</p><p> string str (&quot;now step live...&quot;);
  string::reverse_iterator rit;
  for ( rit=str.rbegin() ; rit &lt; str.rend(); rit++ )</p><pre class='md-fences mock-cm' style='display:block;position:relative'>  cout &lt;&lt; *rit;</pre></li><li><p>string::resize()
- resize函数用来改变string的大小，如果size小于来string的size大小，则截取前size个字符，如果大于，则用空格补充</p><p> </p><p> </p></li></ul></div>
+ resize函数用来改变string的大小，如果size小于来string的size大小，则截取前size个字符，如果大于，则用空格补充</p><p> </p><p> 
+
+</p></li></ul></div>
 </body>
 </html>
