@@ -17,19 +17,9 @@ icon: heart
 
 
 ## 联系我
-- [github](https://github.com/LyonUp)
+- [github](https://github.com/GYSml)
 
-- [stackoverflow](https://stackoverflow.com/users/6307053/lyonup)
-
-- [segmentfault](https://segmentfault.com/u/lyonup)
-
-- [微博](https://weibo.com/3207861813/profile)
-
-- [知乎](https://www.zhihu.com/people/li-hang-55-41)
-
-- [简书](https://www.jianshu.com/users/f674382e9478/timeline)
-
-- email:lyon.lh@foxmail.com  
+- [email](1358121691@qq.com)  
 
 ## 友情链接
 
