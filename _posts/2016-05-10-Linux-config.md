@@ -7,14 +7,14 @@ categories: Linux
 tags: centos
 ---
 * content
-  {:toc}
+{:toc}
+
   这篇文章关于在centos下web项目环境的配置流程以及相关注意事项
 
-  ​
 
-  ​
 
-  ​
+
+
 
 ## 搭建web服务器环境
 
