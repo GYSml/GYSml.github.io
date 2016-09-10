@@ -1,0 +1,96 @@
+### 			QT下C/S通信
+
+​           这篇文章主要介绍一种模式下的通信方式：Client端发送一个数据给server端，然后server端通过接收到的信息来判断执行什么操作，然后在操作之后的数据返回给客户端， 这是针对arm板应程序开发，需在qt4版本下进行应用开发,主要函数介绍
+
+client端的发送/接收函数：
+
+ `client.cpp`	
+
+```
+    tcpSocket=new QTcpSocket(this);//QTcpSocket *tcpSocket;
+    newConnect();//建立自动连接
+    connect(tcpSocket,SIGNAL(readyRead()),this,SLOT(readMessage()));
+    connect(tcpSocket,SIGNAL(error(QAbstractSocket::SocketError)),
+            this,SLOT(displayError(QAbstractSocket::SocketError)));
+//操作函数
+void Dialog::newConnect()
+{
+    blocksize=0; //初始化信息
+    tcpSocket->connectToHost("127.0.0.1",5555);
+    //不需输入地址和端口号，自动连接服务器
+}
+void Dialog::sendMessageToServer(QString str){
+    tcpSocket->write(str.toLatin1());
+    qDebug()<<"client send message:"<<str;
+}
+
+void Dialog::readMessage()
+{
+    QByteArray qba = tcpSocket->readAll();
+    message = QVariant(qba).toString();
+    qDebug()<<"client read message:"<<message;
+}
+```
+
+server端的发送和接收：
+
+`server.cpp`
+
+    //在构造函数中
+    //QTcpServer *tcpServer;
+    //QTcpSocket *clientConnection;
+        tcpServer = new QTcpServer(this);
+        if(!tcpServer->listen(QHostAddress::Any,5555))
+        {
+            qDebug()<<tcpServer->errorString();
+            close();
+        }
+     connect(tcpServer,SIGNAL(newConnection()),this,SLOT(new_connect()));
+     
+     //操作函数
+     void Dialog::new_connect()
+    {
+        clientConnection = tcpServer->nextPendingConnection(); 
+        //获取已经建立的连接套接字			   connect(clientConnection,SIGNAL(readyRead()),this,SLOT(readMessageFromClient()))；
+    }
+    void Dialog::sendMessage(QString str)
+    {
+    	clientConnection->write(str.toLatin1());
+    	qDebug()<<"server send message:"<<str;
+    }
+    //这个函数是通过接收client端发送的数据进行判断对数据进行相应操作
+    void Dialog::readMessageFromClient()
+    {
+        OperatTable db;
+        QByteArray qba = clientConnection->readAll();
+        QString ss = QVariant(qba).toString();
+        qDebug()<<ss;
+        QStringList a = ss.split(":");
+        if(a[1] == "select")
+        {
+            QString s1 = db.findOne(a[0],a[2]);
+            sendMessage(s1);
+            qDebug()<<s1;
+    
+        }else if(a[1] == "update")
+        {
+            db.updateInfo(a[0],a[2]);
+        }else if(a[1] == "drop")
+        {
+            db.deleteInfo(a[0],a[2]);
+        }else if(a[1] == "add")
+        {
+            db.insert(a[0],a[2]);
+        }else if(a[1] == "selectAll")
+        {
+            QString s2 = db.findAll(a[2]);
+            qDebug()<<s2;
+            sendMessage(s2);
+        }
+    }
+    
+
+​	如果服务器和客户端不是在同一电脑上进行通信，则需要考虑网络延时问题，可以client端进行ping指令操作，找出延迟的最大值，在调用connectToHost后调用waitForConnected(timeout),timeout设置值应该比ping指令中的最大值大一点，之后在进行写入操作
+
+​	注意：该server返回的数据是对数据库操作的结果，做测试时可不用连接数据库，直接返回相应的常字符串即可
+
