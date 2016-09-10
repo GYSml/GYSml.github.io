@@ -11,9 +11,6 @@ icon: bookmark
 ## 学习网站
 
 [极客学院](http://www.jikexueyuan.com/)
-
-
-## Comments
-
-{% include comments.html %}
+[csdn](http://www.csdn.net/)
+[qt参考文档](http://www.kuqin.com/qtdocument/index.html)
 
