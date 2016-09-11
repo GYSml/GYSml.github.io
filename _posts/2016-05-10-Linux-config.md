@@ -13,12 +13,7 @@ tags: centos
 
 
 
-
-
-
 ## 搭建web服务器环境
-
-  ​
 
 - 在VM中启动centos的vi编辑器，安装apache
 
