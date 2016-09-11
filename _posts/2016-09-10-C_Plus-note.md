@@ -25,16 +25,17 @@ tags: Cplusplus
 
 -	算术运算
 
-
+```
    void fun(int a,int b)
    {
        a = b - a;
        b = b - a;
        a = b + a;
    }
+```   
 - 指针地址运算
 
-
+```
     void fun(int *a, int *b)
     {
         if(a < b){
@@ -47,6 +48,7 @@ tags: Cplusplus
             b = (int *)(a + ((int) b & 0x0000ffff));
         }
     }
+```
 
 - 位运算
 
@@ -69,7 +71,9 @@ tags: Cplusplus
         a = Pop(s);
         b = Pop(s);
     }
-## const与#define相比有什么不同 ##
+    
+## const与#define相比有什么不同 
+
 - C++语言可以用const定义常量，也可以用#define定义常量,但是前者比后者有更多的优点
   - const常量有数据类型，而宏常量没有数据类型。编译器可以对前者进行类型安全检查，而对后者只进行字符替换，没有类型安全检查，并且在字符替换中可能会产生意想不到的错误(边际效应)
   - 有些集成化的调试工具可以对const常量进行调试，但不能对宏常量进行调试。在C++程序中只使用const常量而不使用宏常量，即const常量完全取代宏常量
@@ -98,35 +102,39 @@ tags: Cplusplus
 
    (rear-front+m)%m;
 
-## union、struct、enum大小区别 ##
+## union、struct、enum大小区别 
 
 - 枚举enum：大小实质上就是整形
 
-
+```
     typedef enum{
                 ANUnknow,ANShape,ANData}ANDataType;
     sizeof(ANDataType) = 4;
+```
+
 - 联合union：大小则以定义中最大的数据类型为准
 
-
+```
     union AAA{
         double d;
         int i;
     }
     sizeof(AAA) = 8;
+```
 
 - 结构体struct：字节对齐原则
 
-
+```
     struct BBB{
         double dd;
         int i;
     }
     sizeof(BBB) = 16;//空结构体的大小为1字节
+```
 
 ---
 
-## 编写类String的构造、析构、拷贝构造和赋值函数 ##
+## 编写类String的构造、析构、拷贝构造和赋值函数 
 类原型：
 
     class String{
