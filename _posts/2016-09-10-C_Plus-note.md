@@ -3,8 +3,8 @@ author: GuoYS
 layout: post
 title:  "C/C_Plus_Plus知识点"
 date:   2016-09-10 21:01:32 +0800
-categories: C_Plus_Plus
-tags: C_Plus_Plus
+categories: C++
+tags: Cplusplus
 ---
 * content
 {:toc}
