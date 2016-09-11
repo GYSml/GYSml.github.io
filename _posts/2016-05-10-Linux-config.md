@@ -122,9 +122,9 @@ tags: centos
   service network restart
   ```
 
-  ​
 
 ##如果在本机还不能访问虚拟机中的web项目 ，则查看防火墙
+
 
 - 查看防火墙信息
 
