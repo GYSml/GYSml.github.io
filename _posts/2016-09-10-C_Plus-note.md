@@ -536,8 +536,8 @@ tags: Cplusplus
 ## 树的基本操作 ##
 
 - 定义
-```
 
+```
     typedef struct BNode  
     {  
       char value; 
@@ -549,7 +549,7 @@ tags: Cplusplus
 
 - 获取二叉树叶子总数
 
-
+```
     int GetLeafeNum(pNode root)  
     {  
         if(root==NULL)  //空节点叶子数为0  
@@ -562,10 +562,11 @@ tags: Cplusplus
         }  
         return GetLeafeNum(root->left)+GetLeafeNum(root->right);  
     }  
+```
 
 - 获取二叉树的高度(左右子树最高高度+1)
 
-
+```
     int GetHeight(pNode root)  
     {  
         if(root==NULL)  
@@ -575,12 +576,11 @@ tags: Cplusplus
         // max(left,right)+1;  
         return (GetHeight(root->left)>=GetHeight(root->right)?(GetHeight(root->left)+1):(GetHeight(root->right)+1));  
     }  
-
- 
+```
 
 - 交换左右子树
 
-
+```
     void swap_tree(pNode root)  
     {  
         if(root==NULL)  
@@ -594,20 +594,22 @@ tags: Cplusplus
             swap_tree(root->right);  
         }  
     } 
+```
 
-## 链表的基本操作 ##
+## 链表的基本操作 
 
 - 定义
 
-
+```
     typedef struct student{
         int data;
         struct student *next;
     }node;
+```
 
 - 单链表逆置
 
-
+```
     node *reverse(node *head)
     {
         node *p1,*p2,*p3;
@@ -625,12 +627,15 @@ tags: Cplusplus
         head = p1;
         return head;
     }
+```
 
 ---
-# 				STL 
+
+# STL 
+
 ---
 
-## string库 ##
+## string库 
 
 - string::npos
    1、std:: string ::npos的定义：
@@ -641,6 +646,7 @@ tags: Cplusplus
 表示 size_t 的最大值（ Maximum value for size_t ） ，如果对 -1 表示size_t的最大值
 代码验证：
 
+```
     #include <iostream>
     #include <limits>
     #include <string>
@@ -651,9 +657,11 @@ tags: Cplusplus
         cout << "npos: " << npos << endl;
         cout << "size_t max: " << numeric_limits<size_t>::max() << endl;
     }//结果：4294967295
+```
+
 也就是说npos表示size_t的最大值
 
-2、std::string::npos使用
+- std::string::npos使用
     如果作为一个 返回值 （return value） 表示没有找到匹配项 
 
 ​    
@@ -666,11 +674,12 @@ tags: Cplusplus
 
 - 将字符串内容反转  string::rbegin()/string::rend();
 
-
+```
    string str ("now step live...");
    string::reverse_iterator rit;
    for ( rit=str.rbegin() ; rit < str.rend(); rit++ )
         cout << *rit;
+```
 
 - string::resize()
    resize函数用来改变string的大小，如果size小于来string的size大小，则截取前size个字符，如果大于，则用空格补充
