@@ -60,12 +60,12 @@ crontab -r
 
 -	定时执行脚本
 
-  `test.sh`
-
-  	   #! /bin/bash
-  	   echo "This is Timer" >> /CCoder/aaa.txt
-  	   exit 0
-
+```
+  //test.sh
+   #! /bin/bash
+   echo "This is Timer" >> /CCoder/aaa.txt
+   exit 0
+```
 
 -	创建定时任务，注意：在执行shell脚本时必须使用绝对路径	
 
