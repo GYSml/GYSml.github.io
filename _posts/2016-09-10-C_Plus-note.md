@@ -63,7 +63,7 @@ tags: Cplusplus
 
 - 栈实现
 
-
+```
     void fun(int a,int b)
     {
         stack s;
@@ -72,7 +72,7 @@ tags: Cplusplus
         a = Pop(s);
         b = Pop(s);
     }
- 
+ ```
  
  
 ## const与#define相比有什么不同 
