@@ -63,7 +63,7 @@ tags: Cplusplus
 
 - 栈实现
 
-
+```
     void fun(int a,int b)
     {
         stack s;
@@ -72,7 +72,7 @@ tags: Cplusplus
         a = Pop(s);
         b = Pop(s);
     }
- 
+```
  
 ## const与define相比有什么不同
 - C++语言可以用const定义常量，也可以用define定义常量,但是前者比后者有更多的优点
