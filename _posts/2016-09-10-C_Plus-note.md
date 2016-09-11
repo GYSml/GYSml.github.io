@@ -52,17 +52,18 @@ tags: Cplusplus
 
 - 位运算
 
-
+```
     void fun(int a, int b)
     {
         a = a^b;
         b = a^b;
         a = a^b;
     }
+```
 
 - 栈实现
 
-
+```
     void fun(int a,int b)
     {
         stack s;
@@ -71,7 +72,8 @@ tags: Cplusplus
         a = Pop(s);
         b = Pop(s);
     }
-    
+ ```
+ 
 ## const与#define相比有什么不同 
 
 - C++语言可以用const定义常量，也可以用#define定义常量,但是前者比后者有更多的优点
@@ -88,9 +90,11 @@ tags: Cplusplus
 
 - 入队和出队的操作
 
-
+```
     rear = (rear+1)%m;
     front = (front+1)%m;
+```
+
 - 删除操作：front指针
 - 插入操作：rear指针
 - 判断队列已满
@@ -100,7 +104,7 @@ tags: Cplusplus
 - 队列长度
 
 
-   (rear-front+m)%m;
+   `(rear-front+m)%m;`
 
 ## union、struct、enum大小区别 
 
@@ -150,7 +154,7 @@ tags: Cplusplus
 
 - 普通构造函数
 
-
+```
    String::String(const char *str)
    {
        if(str == NULL)
@@ -164,21 +168,22 @@ tags: Cplusplus
            strcpy(m_data, str);
        }
    }
-
+```
    
 
 - 析构函数
 
-
+```
     String::~String(void)
     {
         delete [] m_data;
     }
+```
 
 
 - 拷贝构造函数
 
-
+```
     String::String(const String &other)
     {
         int length = strlen(other.m_data);
@@ -190,10 +195,11 @@ tags: Cplusplus
             strcpy(m_data, other.m_data);
         }
     }
+```
 
 - 赋值函数
 
-
+```
     String & String::operator =(const String &other)
     {
         if(this == other)
@@ -211,26 +217,28 @@ tags: Cplusplus
         }
         return *this;
     }
+```
 
-## 拷贝构造函数 ##
+## 拷贝构造函数 
 使用场合：
 
 - 新建一个类，并用另一个同类的对象对它初始化
 - 当函数参数为类对象时，在调用时需要将实参对象传给形参
 
-
+```
     extern void show(Circle cir);
     Circle cir1;
     show(cir1);
+```
 
 - 当函数返回值是类对象时
 
-
+```
     extern Circle getCircle();
     Circle cir = getCircle();
+```
 
-
-## volatile(JD笔试题) ##
+## volatile(JD笔试题) 
 
 作用:作为指令关键字，确保本条指令不会因编译器的优化而省略，且要求每次直接读值
 一个定义为volatile的变量是说这变量可能会被意想不到地改变，这样，编译器就不会去假设这个变量的值了。精确地说就是，优化器在用到这个变量时必须每次都小心地重新读取这个变量的值，而不是使用保存在寄存器里的备份
@@ -252,54 +260,59 @@ tags: Cplusplus
 - 解决方案
   如果Lion类和Tiger类在分别继承Animal类时都用virtual来标注，对于每一个Liger对象，C++会保证只有一个Animal类的子对象会被创建
 
-
+```
     class Tiger : virtual public Animal { /* ... */ };
-
-    class Lion : virtual public Animal { /* ... */ } 
+    class Lion : virtual public Animal { /* ... */ } ;
+```
 
 因为Java不支持多继承，所以不会出现菱形继承问题。但是Java可以通过接口间接实现多重继承
 
+```
     Class Mule implements Horse,Donkey  
     {  
       /* Horse和Donkey是接口*/  
     } 
+```
 
-
-## 结构体的定义方式 ##
+## 结构体的定义方式 
 
 - 方式一:先定义结构体类型，在定义变量
 
-
+```
     struct Student{
         Type data;
     };
     struct Student stu1,stu2;
+```
 
 - 方式二:在定义结构体的同时定义变量
 
-
+```
    struct Student{
        Type data;
    }stu1,stu2;
+```
 
 - 方式三:定义匿名结构体(只能一次性声明结构体变量，不能另外声明)
 
-
+```
     struct {
         Type data;
     }stu1,stu2;    
+```
 
 - 使用typedef声明->推荐该方法
 
-
+```
    typedef struct{
        Type data;
    }Student;
    Student stu1,stu2;
+```
 
 - 结构体的自引用
 
-
+```
     struct SELF_REF2{
         Type data;
         struct SELF_REF2 *b;
@@ -309,6 +322,7 @@ tags: Cplusplus
         Type data;
         struct SELF_REF3_TAG *b;        
     }SELF_REF3;
+```
 
 ---
 ## C++多线程 ##
@@ -336,7 +350,7 @@ tags: Cplusplus
 
 
 ​    
-
+```
     void* say_hello(void* arg)
     {
         int i = *( (int *)arg );//对传入的参数进行强制转换
@@ -344,18 +358,18 @@ tags: Cplusplus
     }
     
     int ret = pthread_creat(&tips,NULL,say_hello,(void *)&i);
-
+```
 
 - 使用pthread_join等待线程结束
 
 
-    pthread_join(tips,NULL);
+    `pthread_join(tips,NULL);`
 
 ​    
 
 - 线程创建时属性参数的设置pthread_attr_t及join功能的使用
 
-
+```
     typedef struct
     {
          int detachstate;   //线程的分离状态
@@ -367,14 +381,15 @@ tags: Cplusplus
          int stackaddr_set; 
          void * stackaddr; //线程栈的位置 
     }pthread_attr_t;
+```
 使用方法：
-
+```
     pthread_attr_t attr; //线程属性结构体，创建线程时加入的参数  
     pthread_attr_init( &attr ); //初始化  
     pthread_attr_setdetachstate( &attr, PTHREAD_CREATE_JOINABLE ); //是设置你想要指定线程属性参数，这个参数表明这个线程是可以join连接的join功能表示主程序可以等线程结束后再去做某事，实现了主程序和线程同步功能
+```
 
-
-## 分别给出BOOL，int，float，指针变量 与“零值”比较的 if 语句（假设变量名为var） ##
+## 分别给出BOOL，int，float，指针变量 与“零值”比较的 if 语句（假设变量名为var） 
 
 - BOOL型变量
 
@@ -391,10 +406,10 @@ tags: Cplusplus
 
 - float型变量：
 
-
+```
     const float EPSINON = 0.00001;
     if ((x >= - EPSINON) && (x <=EPSINON)
-
+```
 
 ​    
 
@@ -408,12 +423,12 @@ tags: Cplusplus
    实际上，成员函数默认第一个参数为T* const this
 - this在成员函数的开始前构造，在成员的结束后清除。当调用一个类的成员函数时，编译器将类的指针作为函数的this参数传递进去
 
-
+```
     A a;
     a.func(10);
     //编译器会编译成：
     A::func(&a,10);
-
+```
 - this指针并不占用对象的空间
    所有成员函数的参数，不管是不是隐含的，都不会占用对象的空间，只会占用参数传递时的栈空间，或者直接占用一个寄存器
 - this指针是什么时候创建的
@@ -516,7 +531,7 @@ tags: Cplusplus
 ## 树的基本操作 ##
 
 - 定义
-
+```
 
     typedef struct BNode  
     {  
@@ -525,7 +540,7 @@ tags: Cplusplus
       struct BNode *right;  
     } Node,*pNode,**ppNode; 
 
-   
+ ```
 
 - 获取二叉树叶子总数
 
