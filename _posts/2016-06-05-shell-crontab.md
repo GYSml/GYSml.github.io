@@ -13,7 +13,7 @@ tags: centos
 
 
 
-##centos重启命令：
+## centos重启命令：
 
 - reboot
 
@@ -23,7 +23,7 @@ tags: centos
 
 - shutdown -r 20:35 在时间为20:35时候重启(root用户使用)
 
-##Linux centos关机命令：
+## Linux centos关机命令：
 
 - halt 立刻关机
 
@@ -35,7 +35,7 @@ tags: centos
 
 - 如果是通过shutdown命令设置关机的话，可以用shutdown -c命令取消重启。
 
-##实现定时任务crontab
+## 实现定时任务crontab
 
 - 查看当前是否有定时任务
 
@@ -73,7 +73,7 @@ crontab -r
 
   ​	编辑内容：`*/1 * * * * sh /CCoder/test.sh`
 
-##crontab命令介绍
+## crontab命令介绍
 
 -	基本格式：
 
