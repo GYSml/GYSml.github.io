@@ -8,10 +8,11 @@ tags: SQL
 ---
 * content
 {:toc}
+
 这是最近使用mongodb的一些学习笔记,也遇到了一些问题，以后会在这里陆续更新
 
-## 启动MongoDB
 
+## 启动MongoDB
 - 给MongoDB指定文件夹db,用来存放MongoDB数据
 - 在cmd指定path路径
 
