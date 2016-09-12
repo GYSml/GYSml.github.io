@@ -19,9 +19,9 @@ tags: SQL
 - 在cmd指定path路径
 
     ```
-    c:\Users\Administraror>D:
-    D:\>cd mongodb\bin
-    D:\mongodb\bin>mongod --dbpath=D:\mongpdb\db
+        c:\Users\Administraror>D:
+        D:\>cd mongodb\bin
+        D:\mongodb\bin>mongod --dbpath=D:\mongpdb\db
     ```
 
 - 验证是否开启成功：默认端口27017，在浏览器输入http://localhost:27017/测试
