@@ -101,6 +101,7 @@ tags: SQL
    第一个参数为查找条件，第二个则为更新的值
 
   - 整体更新
+
 ```
     //整体更新：普通方式
     db.student.update({"name":"age"},{"name":"lisi","age":"18"});
