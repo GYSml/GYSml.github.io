@@ -127,22 +127,23 @@ tags: SQL
           db.student.update({"name":"zhangdan"},{$inc:{"age":10}})   结果  age = 10
     ```
 
-3.upsert操作
+  - upsert操作
 如果没有查到，就在数据库里面新增一条
 好处：避免在数据库里面判断是update还是add操作，单将update的第三个参数设为true即可。
 
-    db.student.update({"name":"wangwu"},{$inc:{"age":17}},true)
+    `db.student.update({"name":"wangwu"},{$inc:{"age":17}},true)`
     增加新纪录： name:wangwu age:17
 
-4.批量更新
+  - 批量更新
     如果匹配多条，默认的情况下只更新第一条，如果我们有批量更新在update的第四个参数中设为true即可
 
-    db.student.update({"name":"wangwu"},{$inc:{"age":19}},true，true)
+    `db.student.update({"name":"wangwu"},{$inc:{"age":19}},true，true)`
 ​    
 
 - remove()
 
     注意：remove()不带参数则删除所有数据，该操作为不可撤回操作
+    
    ` db.student.remove({"name:joe"});`
 
 
