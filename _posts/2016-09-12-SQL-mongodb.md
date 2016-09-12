@@ -41,7 +41,7 @@ tags: SQL
 - insert()
 
     ```
-        //一般写法:
+        一般写法:
         db.student.insert({"name":"zhangsan","age":"19"})
         db.student.insert({"name":"lisi","age":"20"})
         //js语法
