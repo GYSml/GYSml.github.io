@@ -40,20 +40,20 @@ tags: SQL
 
 - insert()
 
-
-    //一般写法:
-    db.student.insert({"name":"zhangsan","age":"19"})
-    db.student.insert({"name":"lisi","age":"20"})
-    //js语法
-    var data={"name":"zhangsan","age":20,"address":{"province":"jiangxi","city":"nanchang"},"class":["Java","SQL"]}
-    db.student.insert(data)
-    
-    data.name="lisi"
-    data.age=25
-    data.address={"province":"zhejiang","city":"hangzhou"}
-    data.class=["C","C++"]
-    db.student.insert(data)
-
+    ```
+        //一般写法:
+        db.student.insert({"name":"zhangsan","age":"19"})
+        db.student.insert({"name":"lisi","age":"20"})
+        //js语法
+        var data={"name":"zhangsan","age":20,"address":{"province":"jiangxi","city":"nanchang"},"class":["Java","SQL"]}
+        db.student.insert(data)
+        
+        data.name="lisi"
+        data.age=25
+        data.address={"province":"zhejiang","city":"hangzhou"}
+        data.class=["C","C++"]
+        db.student.insert(data)
+    ```
 - find()
 
   - 比较操作>=,>, <, <=, !=, =
@@ -86,10 +86,12 @@ tags: SQL
     ```
 
   - 正则表达式
-```
-      find name start z end n ->zhangsan
-      db.student.find({"name":/^z/,"name":/n$/})
-```
+
+    ```
+          find name start z end n ->zhangsan
+          db.student.find({"name":/^z/,"name":/n$/})
+    ```
+    
 - $where语句
 
   ```
@@ -102,27 +104,28 @@ tags: SQL
 
   - 整体更新
 
-```
-    //整体更新：普通方式
-    db.student.update({"name":"age"},{"name":"lisi","age":"18"});
-    //js更新
-    var example=db.student.findOne({"name":"zhangsan"})
-    example.age = 30
-    db.student.update({"name":"zhangsan"},example)
-```
-
+    ```
+        //整体更新：普通方式
+        db.student.update({"name":"age"},{"name":"lisi","age":"18"});
+        //js更新
+        var example=db.student.findOne({"name":"zhangsan"})
+        example.age = 30
+        db.student.update({"name":"zhangsan"},example)
+    ```
 
 
 - 局部更新
   - $inc  增加指定值
-```
-db.student.update({"name":"zhangdan"},{$inc:{"age":10}})   结果  age = 40
-```
+ 
+    ```
+        db.student.update({"name":"zhangdan"},{$inc:{"age":10}})   结果  age = 40
+    ```
 
   - $set 
-```
-db.student.update({"name":"zhangdan"},{$inc:{"age":10}})   结果  age = 10
-```
+
+    ```
+          db.student.update({"name":"zhangdan"},{$inc:{"age":10}})   结果  age = 10
+    ```
 
 3.upsert操作
 如果没有查到，就在数据库里面新增一条
