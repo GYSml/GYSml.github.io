@@ -114,14 +114,14 @@ tags: SQL
 
 - 局部更新
   - $inc  增加指定值
-
-
-​    
-`db.student.update({"name":"zhangdan"},{$inc:{"age":10}})   结果  age = 40`
+```
+db.student.update({"name":"zhangdan"},{$inc:{"age":10}})   结果  age = 40
+```
 
   - $set 
-
-`db.student.update({"name":"zhangdan"},{$inc:{"age":10}})   结果  age = 10`
+```
+db.student.update({"name":"zhangdan"},{$inc:{"age":10}})   结果  age = 10
+```
 
 3.upsert操作
 如果没有查到，就在数据库里面新增一条
