@@ -1,10 +1,10 @@
 ---
+author: GuoYS
 layout: post
 title:  "MongoDB"
 date:   2016-09-12 20::28:16 +0800
 categories: MongoDB SQL
 tags: SQL
-author: GuoYS
 ---
 * content
 {:toc}
