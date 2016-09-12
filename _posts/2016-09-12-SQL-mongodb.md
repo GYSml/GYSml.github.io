@@ -113,13 +113,13 @@ tags: SQL
 
 
 - 局部更新
-- $inc  增加指定值
+  - $inc  增加指定值
 
 
 ​    
 `db.student.update({"name":"zhangdan"},{$inc:{"age":10}})   结果  age = 40`
 
-- $set 
+  - $set 
 
 `db.student.update({"name":"zhangdan"},{$inc:{"age":10}})   结果  age = 10`
 
