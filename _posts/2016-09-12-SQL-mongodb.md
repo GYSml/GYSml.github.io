@@ -18,11 +18,11 @@ tags: SQL
 - 给MongoDB指定文件夹db,用来存放MongoDB数据
 - 在cmd指定path路径
 
-```
+    ```
     c:\Users\Administraror>D:
     D:\>cd mongodb\bin
     D:\mongodb\bin>mongod --dbpath=D:\mongpdb\db
-```
+    ```
 
 - 验证是否开启成功：默认端口27017，在浏览器输入http://localhost:27017/测试
 
@@ -40,7 +40,7 @@ tags: SQL
 
 - insert()
 
-```
+    ```
     一般写法:
     db.student.insert({"name":"zhangsan","age":"19"})
     db.student.insert({"name":"lisi","age":"20"})
@@ -52,7 +52,7 @@ tags: SQL
     data.address={"province":"zhejiang","city":"hangzhou"}
     data.class=["C","C++"]
     db.student.insert(data)
-```
+    ```
     
 - find()
 
@@ -95,8 +95,8 @@ tags: SQL
 - $where语句
 
   ```
-  find name='zhangsan'
-  db.student.find({$where:function(){return this.name=='zhangsan'}})
+         find name='zhangsan'
+         db.student.find({$where:function(){return this.name=='zhangsan'}})
   ```
 
 - update()
@@ -168,17 +168,18 @@ tags: SQL
 - distinct  
 
     功能：指定了哪列，哪列就不能重复
+    
     `db.student.distinct({"age"})`
 
 - group
 
 参数介绍：key:分组的key,这里指年龄
-
           initial：每组都有一个初始化函数
           $reduce:第一个参数为当前文档对象，第二个为上一次function操作的累计对象
 可选参数：condition:  这个就是过滤条件。
 finalize函数：每一组文档执行完后，多会触发此方法，那么在每组集合里面加上count也就是它的功能。
-
+    
+    ```
     db.student.group({
         "key":{"age":true},
         "initial":{"student":[]},
@@ -186,12 +187,12 @@ finalize函数：每一组文档执行完后，多会触发此方法，那么在
             prev.student.push(cur,prev);
         }
         })
-
+    ```
 
 增加功能：过滤age>20的人
           有时student数组中数据多，加count标识
    
-
+    ```
     db.student.group({
         "key":{"age":true},
         "initial":{"student":[]},
@@ -203,16 +204,14 @@ finalize函数：每一组文档执行完后，多会触发此方法，那么在
         },
         "condition":{"age":{$lt:25}}
         })
-
+    ```
 - mapReduce
-
-​    
 
     1.map:称为映射函数，里面调用emit(key,value),按照key进行映射分组
     2.reduce：称为简化函数，会对map分组后的数据进行简化，reduce(key,value)中的key就是emit中的key，value就是emit分组后的emit(value)的集合
     3.mapReduce：执行函数，参数为map,reduce和可选参数
 
-
+    ```
     >map
     function(){
         emit(this.name,{count:1});
@@ -226,7 +225,8 @@ finalize函数：每一组文档执行完后，多会触发此方法，那么在
         return result;
     }
     >db.student.mapReduce(map,reduce,{"out":"collect_value"})
-
+    ```
+    
 看collect_value中的结果：
 
     db.collect_value.find()
@@ -236,7 +236,7 @@ finalize函数：每一组文档执行完后，多会触发此方法，那么在
 - 游标
 - 全部查询
 
-
+    ```
     var list=db.student.find();
     遍历：
     lsit.forEach(function(x){print(x.name);
@@ -244,7 +244,7 @@ finalize函数：每一组文档执行完后，多会触发此方法，那么在
     while(list.hasNext()){
         var dox = list.next();
     }
-
+    ```
 
 针对这样的操作，list其实并没有获取到person中的文档，而是申明一个“查询结构”，等我们需要的时候通过for或者next()一次性加载过来，然后让游标逐行读取，当我们枚举完了之后，游标销毁，之后我们在通过list获取时，发现没有数据返回了
 
@@ -264,11 +264,12 @@ sort对得到的子集合进行排序，可以按照多个键进行正反排序
 
 - 插入1w条数据
 
-
+    ```
     db.student.remove();
     for(var i=0;i<10000;i++)
         db.student.insert({"name":"abc"+i,"age":i});
-
+    ```
+    
 - 性能分析函数(explian)
   在这里没有建立索引，直接查询abc10000的姓名
 
