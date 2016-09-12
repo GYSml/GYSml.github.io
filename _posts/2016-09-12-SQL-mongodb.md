@@ -1,13 +1,14 @@
 ---
 layout: post
 title:  "MongoDB"
-date:   2016-07-13 18::28:6 +0800
+date:   2016-09-12 20::28:16 +0800
 categories: MongoDB SQL
 tags: SQL
 author: GuoYS
 ---
 * content
 {:toc}
+
   这是最近使用mongodb的一些学习笔记,也遇到了一些问题，以后会在这里陆续更新
 
 
