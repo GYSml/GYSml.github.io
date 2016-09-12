@@ -47,7 +47,6 @@ tags: SQL
         js语法
         var data={"name":"zhangsan","age":20,"address":{"province":"jiangxi","city":"nanchang"},"class":["Java","SQL"]}
         db.student.insert(data)
-        
         data.name="lisi"
         data.age=25
         data.address={"province":"zhejiang","city":"hangzhou"}
