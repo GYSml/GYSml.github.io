@@ -40,7 +40,7 @@ D:\mongodb\bin>mongod --dbpath=D:\mongpdb\db
 
 - insert()
 
-    ```
+```
        一般写法:
        db.student.insert({"name":"zhangsan","age":"19"})
        db.student.insert({"name":"lisi","age":"20"})
@@ -52,7 +52,7 @@ D:\mongodb\bin>mongod --dbpath=D:\mongpdb\db
        data.address={"province":"zhejiang","city":"hangzhou"}
        data.class=["C","C++"]
        db.student.insert(data)
-    ```
+```
     
 - find()
 
