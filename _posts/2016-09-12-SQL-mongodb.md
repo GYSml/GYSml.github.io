@@ -20,7 +20,9 @@ tags: SQL
 
     ```
         c:\Users\Administraror>D:
+        
         D:\>cd mongodb\bin
+        
         D:\mongodb\bin>mongod --dbpath=D:\mongpdb\db
     ```
 
