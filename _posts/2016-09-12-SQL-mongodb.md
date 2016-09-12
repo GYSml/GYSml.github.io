@@ -44,7 +44,7 @@ tags: SQL
         一般写法:
         db.student.insert({"name":"zhangsan","age":"19"})
         db.student.insert({"name":"lisi","age":"20"})
-        //js语法
+        js语法
         var data={"name":"zhangsan","age":20,"address":{"province":"jiangxi","city":"nanchang"},"class":["Java","SQL"]}
         db.student.insert(data)
         
