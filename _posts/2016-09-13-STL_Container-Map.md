@@ -1,4 +1,20 @@
--  说明：map内部本身就是按序存储的（比如红黑树）。在我们插入<key, value>键值对时，就会按照key的大小顺序进行存储。这也是作为key的类型必须能够进行<运算比较的原因
+---
+author: GuoYS
+layout: post
+title:  "STL_Container_map"
+date:   2016-09-13 17:29:20 +0800
+categories: C++
+tags: STL 
+---
+* content
+{:toc}
+
+  C++中STL库中关于container的map学习笔记
+  
+  
+  
+  
+- 说明：map内部本身就是按序存储的（比如红黑树）。在我们插入<key, value>键值对时，就会按照key的大小顺序进行存储。这也是作为key的类型必须能够进行<运算比较的原因
 
 - begin()/end()
 
