@@ -32,30 +32,32 @@ tags: centos
     c.assign(beg,end)   //将[beg; end)区间中的数据赋值给c
 
 - at()
-```
-    //得到某一位置中对应的值
-    for(int i=0;i<myints.size();++i)
-        myints.at[i] = i;
-    for(int i=0;i<myints.size();++i)
-        cout<< myints.at(i);
-```
+
+  ```
+      //得到某一位置中对应的值
+      for(int i=0;i<myints.size();++i)
+          myints.at[i] = i;
+      for(int i=0;i<myints.size();++i)
+          cout<< myints.at(i);
+  ```
 - back()
   返回当前vector容器中末尾元素的引用
 
-```
-    myVector.push_back(10);
-    while(myVector.back()!=0){
-        myVector.push_back(myVector.back()-1);
-    }
-    //  10 9 8 7 6 5 4 3 2 1 0
-```
+  ```
+      myVector.push_back(10);
+      while(myVector.back()!=0){
+          myVector.push_back(myVector.back()-1);
+      }
+      //  10 9 8 7 6 5 4 3 2 1 0
+  ```
 - begin()/end()
 
-
+  ```
     vector<int>::iterator it;
     for(it=myVector.begin();it<myVector.end;it++)
         cout<<*it;
-
+  ```
+  
 - clear()
   清空vector中的数据
 
