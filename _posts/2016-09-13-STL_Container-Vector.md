@@ -66,11 +66,14 @@ tags: centos
 
 - empty
  
- 判断vector是否为空  vector.size() == 0
-
+  ```
+    判断vector是否为空  vector.size() == 0
+  ```
+  
 - erase()
  
  删除指向的元素
+
 
   ```
     for(int i=1;i<=10;i++);
