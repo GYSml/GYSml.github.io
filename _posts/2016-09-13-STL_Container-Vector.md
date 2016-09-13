@@ -3,7 +3,7 @@ author: GuoYS
 layout: post
 title:  "STL_Container_vector"
 date:   2016-09-13 10:38:09 +0800
-categories: C++
+categories: STL
 tags: STL 
 ---
 * content
