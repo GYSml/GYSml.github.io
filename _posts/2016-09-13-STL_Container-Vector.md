@@ -41,6 +41,7 @@ tags: centos
           cout<< myints.at(i);
   ```
 - back()
+
   返回当前vector容器中末尾元素的引用
 
   ```
@@ -60,7 +61,7 @@ tags: centos
   
 - clear()
   
-清空vector中的数据
+  清空vector中的数据
 
 - empty
  
@@ -71,10 +72,10 @@ tags: centos
  删除指向的元素
 
   ```
-      for(int i=1;i<=10;i++);
-          myVector.push_back(i);
-      myVector.erase(myVector.begin()+5);  //删除第6个
-      myVector.erase(myVector.begin(),myVector.begin()+3);//删除前三个
+    for(int i=1;i<=10;i++);
+        myVector.push_back(i);
+    myVector.erase(myVector.begin()+5);  //删除第6个
+    myVector.erase(myVector.begin(),myVector.begin()+3);//删除前三个
   ```
   
 -front()
@@ -147,6 +148,7 @@ tags: centos
 - push_back()/pop_back()
 
   push_back(x)：将x追加到vector末尾，长度加1
+  
   pop_back():将vector最后一位元素弹出，长度减1
 
 - rbegin()/rend()
