@@ -3,7 +3,7 @@ author: GuoYS
 layout: post
 title:  "STL_Container_map"
 date:   2016-09-13 18:19:19 +0800
-categories: C++
+categories: STL
 tags: STL 
 ---
 * content
