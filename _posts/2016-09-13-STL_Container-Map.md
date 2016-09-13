@@ -1,4 +1,4 @@
-- 说明：map内部本身就是按序存储的（比如红黑树）。在我们插入<key, value>键值对时，就会按照key的大小顺序进行存储。这也是作为key的类型必须能够进行<运算比较的原因
+-  说明：map内部本身就是按序存储的（比如红黑树）。在我们插入<key, value>键值对时，就会按照key的大小顺序进行存储。这也是作为key的类型必须能够进行<运算比较的原因
 
 - begin()/end()
 
@@ -8,10 +8,10 @@
     mymap['a']=100;
     mymap['b']=200;
     mymap['c']=300
-
+    
     for(it=mymap.begin();it<mymap.end();it++)
         cout<< (*it).first << (*it).second<<endl;
-
+    
     //不使用iterator遍历见empty()
 
   ​      
@@ -28,7 +28,7 @@
     mymap ['a']=101;
     mymap ['c']=202;
     mymap ['f']=303;
-
+    
     mymap.count('a')  返回1
     mymap.count('x')  返回0
 
@@ -98,18 +98,17 @@ lower_bound返回区间A的第一个迭代器，算法upper_bound返回区间A�
     map<char,int> mymap;
     pair<const char,int>* p;
     p = mymap.get_allocator().allocate(5);
-
+    
     psize = (int)sizeof(map<char,int>::value_type)*5; 
     mymap.get_allocator().deallocate(p,5);
 
 - insert()
 
-    
 
     map<char,int>mymap;
     map<char,int>::iterator it;
     pair<map<char,int>::iterator,bool> ret;
-
+    
     //插入方式1，单个参数
     mymap.insert(pair<char,int>('a',100));
     mymap.insert(pair<char,int>('z',200));
@@ -160,15 +159,14 @@ lower_bound返回区间A的第一个迭代器，算法upper_bound返回区间A�
 
 - operator=
 
-    
 
     map<char,int> first;
     map<char,int> second;
-
+    
     first['x']=8;
     first['y']=16;
     first['z']=32;
-
+    
     second=first;          second.size() = 3
     first=map<char,int>();  first.size() = 0
 
@@ -217,14 +215,13 @@ lower_bound返回区间A的第一个迭代器，算法upper_bound返回区间A�
 
 - 自定义compare()函数
 
-    
 
     struct CmpByKeyLength {  
       bool operator()(const string& k1, const string& k2) {  
         return k1.length() < k2.length();  
       }  
     };
-
+    
     使用：
     map<string,int,CmpByKeyLength>mymap;
     功能：map会按照key关键字的长度进行排序
