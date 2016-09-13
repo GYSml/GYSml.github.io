@@ -51,6 +51,7 @@ tags: centos
       }
       //  10 9 8 7 6 5 4 3 2 1 0
   ```
+  
 - begin()/end()
 
   ```
@@ -78,9 +79,9 @@ tags: centos
     myVector.erase(myVector.begin(),myVector.begin()+3);//删除前三个
   ```
   
--front()
+- front()
 
-获得vector中第一个元素数据
+  获得vector中第一个元素数据
 
 - get_allocator()
 
