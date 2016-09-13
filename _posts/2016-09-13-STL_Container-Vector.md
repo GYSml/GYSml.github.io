@@ -72,8 +72,7 @@ tags: centos
   
 - erase()
  
- 删除指向的元素
-
+   删除指向的元素
 
   ```
     for(int i=1;i<=10;i++);
