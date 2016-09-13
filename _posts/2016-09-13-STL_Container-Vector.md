@@ -1,4 +1,16 @@
-# vector
+---
+author: GuoYS
+layout: post
+title:  "STL_Container_vector"
+date:   2016-09-13 10:38:09 +0800
+categories: Linux
+tags: centos
+---
+* content
+{:toc}
+
+  C++中STL库中关于container的vector学习笔记
+
 - vector初始化
 
   ```
@@ -10,6 +22,7 @@
       int myints[] = {1,2,3,4};
       vector<int> five(myints,myints+sizeof(myints)/sizeof(int));
   ```
+  
 - assign()
 
 
