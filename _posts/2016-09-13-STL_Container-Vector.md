@@ -71,7 +71,7 @@ tags: centos
   ```
   
 - erase()
- 
+
    删除指向的元素
 
   ```
