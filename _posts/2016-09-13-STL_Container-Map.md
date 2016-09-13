@@ -13,7 +13,7 @@ tags: STL
   
   
   
-  
+
 - 说明
 
    map内部本身就是按序存储的（比如红黑树）。在我们插入<key,value>键值对时，就会按照key的大小顺序进行存储。这也是作为key的类型必须能够进行小于运算比较的原因
@@ -32,12 +32,12 @@ tags: STL
     
     //不使用iterator遍历见empty()
 
-  ​      
-
 - clear()
+
   清空map中的数据
 
 - count()
+
   查看map中是否存在某个key值,无法定位数据位置
 
 
@@ -51,7 +51,7 @@ tags: STL
 
 - empty()
 
-返回0 表示空
+  返回0 表示空
 
 
     //不使用iterator遍历map
@@ -64,7 +64,7 @@ tags: STL
 
 - equal_range()
 
-lower_bound返回区间A的第一个迭代器，算法upper_bound返回区间A的最后一个元素的下一个位置，算法equal_range则是以pair的形式将两者都返回
+  lower_bound返回区间A的第一个迭代器，算法upper_bound返回区间A的最后一个元素的下一个位置，算法equal_range则是以pair的形式将两者都返回
 
     map<char,int> mymap;
     pair<map<char,int>::iterator,map<char,int>::iterator> ret;
