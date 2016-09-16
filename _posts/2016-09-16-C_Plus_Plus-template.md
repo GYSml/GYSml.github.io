@@ -89,7 +89,7 @@ tags: template
   　returnType 类名<模板形参名>::函数名(参数列表){函数体}；
     template<class T1> void A<T1>::hy(T1 c,T1 d){}
 　```
-　
+
 - 模板的声明或定义只能在全局，命名空间或类范围内进行。即不能在局部范围，函数内进行
 
 
