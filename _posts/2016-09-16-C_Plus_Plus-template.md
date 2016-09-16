@@ -1,4 +1,15 @@
-## C++模板详解
+---
+author: GuoYS
+layout: post
+title:  "Centos6.5下搭建web服务器/访问web项目"
+date:   2016-05-12 20:08:28 +0800
+categories: C++
+tags: template
+---
+* content
+{:toc}
+
+  在C++中，适当的使用模板类或者模板函数能够大大的减少代码量的编写，这里介绍一些关于模板的使用方法和注意事项
 
 - 模板定义
 
