@@ -1,8 +1,8 @@
 ---
 author: GuoYS
 layout: post
-title:  "Centos6.5下搭建web服务器/访问web项目"
-date:   2016-05-12 20:08:28 +0800
+title:  "模板的介绍及使用"
+date:   2016-09-16 16:36:10 +0800
 categories: C++
 tags: template
 ---
