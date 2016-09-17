@@ -320,17 +320,18 @@ tags: SQL
   
   - 使用getindexes查看生成的索引：
 
-  ```
-    db.student.getIndexes()
-    结果有：name_1_birthday_1、birthday_1_name_1
-  ```
+    ```
+      db.student.getIndexes()
+      结果有：name_1_birthday_1、birthday_1_name_1
+    ```
   
-  不过查询优化器会选择最优的索引查询
-
-  也可以使用hint方法强制执行
-
-    db.student.find({"birthday":"1995-02-07","name":"gys"}).hint({"birthday":1,"name":1})
-
+    不过查询优化器会选择最优的索引查询
+    也可以使用hint方法强制执行
+    
+    ```
+      db.student.find({"birthday":"1995-02-07","name":"gys"}).hint({"birthday":1,"name":1})
+    ```
+    
 - 删除索引
   查看索引
 
