@@ -107,13 +107,13 @@ tags: lexical_cast
     ```
 
     等价：
-    
-  ```
-      int item;
-      std::stringstream ss;
-      ss<<"123";
-      s>>item;
-  ```
+      
+    ```
+        int item;
+        std::stringstream ss;
+        ss<<"123";
+        s>>item;
+    ```
 
   - 输入数据必须“完整”地转换，否则抛出bad_lexical_cast异常
 
