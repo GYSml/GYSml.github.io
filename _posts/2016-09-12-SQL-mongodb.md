@@ -286,21 +286,21 @@ tags: SQL
    db.student.find({"name":"abc"+10000}).explain();
   ```
   
-  参数介绍：
-    cursor:BasicCursor表示表查找，也就是顺序查找
-    nscanned:表示数据库浏览文档的个数(10000)
-    n:表示最终返回一个文档
-    milis:总共耗时114ms
+  - 参数介绍：
+    - cursor:BasicCursor表示表查找，也就是顺序查找
+    - nscanned:表示数据库浏览文档的个数(10000)
+    - n:表示最终返回一个文档
+    - milis:总共耗时114ms
 
 - 建立索引
 
-
+  ```
     db.student.ensureIndex({"name":1})
     db.student.find({"name"+10000}).explain()
-    
-    cursor:BTreeCursor ,MongDB采用B树的结构存放索引
-    nscanned:数据库只浏览一个
-    n：直接定位返回
+  ```
+    - cursor:BTreeCursor ,MongDB采用B树的结构存放索引
+    - nscanned:数据库只浏览一个
+    - n：直接定位返回
 
 - 唯一索引  
   作用：唯一的键值不能插入
