@@ -245,7 +245,7 @@ tags: SQL
 - 游标
 - 全部查询
 
-    ```
+  ```
     var list=db.student.find();
     遍历：
     lsit.forEach(function(x){print(x.name);
@@ -253,7 +253,7 @@ tags: SQL
     while(list.hasNext()){
         var dox = list.next();
     }
-    ```
+  ```
 
    针对这样的操作，list其实并没有获取到person中的文档，而是申明一个“查询结构”，等我们需要的时候通过for或者next()一次性加载过来，然后让游标逐行读取，当我们枚举完了之后，游标销毁，之后我们在通过list获取时，发现没有数据返回了
 
@@ -265,8 +265,9 @@ tags: SQL
   - skip是忽略前面的部分文档，如果文档总数量小于忽略的数量，则返回空集合；
   - sort对得到的子集合进行排序，可以按照多个键进行正反排序
 
+  ```
     var single=db.person.find().sort({"name",1}).skip(2).limit(2);
-
+  ```
 
 ## 索引
 
