@@ -20,12 +20,12 @@ tags: lexical_cast
 
 ## 字符串→数值
 
-  - 如何将字符串"123"转换为int类型整数123？答案是，用标准C的库函数atoi
-  - 如果要转换为long类型呢？标准C的库函数atol
-  - 如何将"123.12"转换为double类型呢？标准C的库函数atod
-  - 如果要转换为long double类型呢？标准C的库函数atold
+- 如何将字符串"123"转换为int类型整数123？答案是，用标准C的库函数atoi
+- 如果要转换为long类型呢？标准C的库函数atol
+- 如何将"123.12"转换为double类型呢？标准C的库函数atod
+- 如果要转换为long double类型呢？标准C的库函数atold
 
-  C++:
+C++:
 
   ```
   #include <boost/lexical_cast.hpp>
@@ -44,7 +44,7 @@ tags: lexical_cast
   ​
 
 
-- ####  数值→字符串
+##  数值→字符串
 
   sprintf()函数：
 
@@ -70,7 +70,7 @@ tags: lexical_cast
   }
   ```
 
-- 异常
+## 异常
 
   如果转换失败，则会有异常bad_lexical_cast抛出。该异常类是标准异常类bad_cast的子类
 
