@@ -45,14 +45,14 @@ tags: lexical_cast
 
 ## 数值→字符串
 
-  sprintf()函数：
+- sprintf()函数：
 
   ```
     char item[100];
     sprintf(item,"%s",12345.678);
   ```
 
-  C++标准字符串string:
+- C++标准字符串string:
 
   ```
     #include <boost/lexical_cast.hpp>
@@ -70,7 +70,7 @@ tags: lexical_cast
 
 ## 异常
 
-  如果转换失败，则会有异常bad_lexical_cast抛出。该异常类是标准异常类bad_cast的子类
+- 如果转换失败，则会有异常bad_lexical_cast抛出。该异常类是标准异常类bad_cast的子类
 
   ```
     #include <boost/lexical_cast.hpp>
