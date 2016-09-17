@@ -25,21 +25,21 @@ tags: lexical_cast
 - 如何将"123.12"转换为double类型呢？标准C的库函数atod
 - 如果要转换为long double类型呢？标准C的库函数atold
 
-C++:
+  C++:
 
-```
-    #include <boost/lexical_cast.hpp>
-    #include <iostream>
-    int main()
-    {
-            using boost::lexical_cast;
-            int a = lexical_cast<int>("123");
-            double b = lexical_cast<double>("123.12");
-            std::cout<<a<<std::endl
-            std::cout<<b<<std::endl;
-            return 0;
-    }
-```
+  ```
+      #include <boost/lexical_cast.hpp>
+      #include <iostream>
+      int main()
+      {
+              using boost::lexical_cast;
+              int a = lexical_cast<int>("123");
+              double b = lexical_cast<double>("123.12");
+              std::cout<<a<<std::endl
+              std::cout<<b<<std::endl;
+              return 0;
+      }
+  ```
 
 
 
@@ -48,24 +48,24 @@ C++:
   sprintf()函数：
 
   ```
-  char item[100];
-  sprintf(item,"%s",12345.678);
+    char item[100];
+    sprintf(item,"%s",12345.678);
   ```
 
   C++标准字符串string:
 
   ```
-  #include <boost/lexical_cast.hpp>
-  #include <string>
-  #include <iostream>
-  int main()
-  {
-          using std::string;
-          const double d = 123.12;
-          string s = boost::lexical_cast<string>(d);
-          std::cout<<s<<std::endl;
-          return 0;
-  }
+    #include <boost/lexical_cast.hpp>
+    #include <string>
+    #include <iostream>
+    int main()
+    {
+            using std::string;
+            const double d = 123.12;
+            string s = boost::lexical_cast<string>(d);
+            std::cout<<s<<std::endl;
+            return 0;
+    }
   ```
 
 ## 异常
@@ -73,23 +73,23 @@ C++:
   如果转换失败，则会有异常bad_lexical_cast抛出。该异常类是标准异常类bad_cast的子类
 
   ```
-  #include <boost/lexical_cast.hpp>
-  #include <iostream>
-  using namespace td;
-  int main()
-  {
-          int i;
-          try{
-                  i = boost::lexical_cast<int>("abcd");
-          }
-          catch(boost::bad_lexical_cast& e)
-          {
-                  cout<<e.what()<<endl; 
-                  return 1;
-          }
-          cout<<i<<endl;
-          return 0;
-  }
+    #include <boost/lexical_cast.hpp>
+    #include <iostream>
+    using namespace td;
+    int main()
+    {
+            int i;
+            try{
+                    i = boost::lexical_cast<int>("abcd");
+            }
+            catch(boost::bad_lexical_cast& e)
+            {
+                    cout<<e.what()<<endl; 
+                    return 1;
+            }
+            cout<<i<<endl;
+            return 0;
+    }
   ```
 
   异常消息：bad lexical cast: source type value could not be interpreted as target
@@ -107,12 +107,13 @@ C++:
     ```
 
     等价：
-    ```
-    int item;
-    std::stringstream ss;
-    ss<<"123";
-    s>>item;
-    ```
+    
+  ```
+      int item;
+      std::stringstream ss;
+      ss<<"123";
+      s>>item;
+  ```
 
   - 输入数据必须“完整”地转换，否则抛出bad_lexical_cast异常
 
