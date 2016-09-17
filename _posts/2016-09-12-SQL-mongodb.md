@@ -188,13 +188,13 @@ tags: SQL
     finalize函数：每一组文档执行完后，多会触发此方法，那么在每组集合里面加上count也就是它的功能。
 
  ```
-   db.student.group({
+  db.student.group({
        "key":{"age":true},
        "initial":{"student":[]},
        "$reduce":function(cur,prev){
            prev.student.push(cur,prev);
       }
-    })
+  })
  ```
 
    增加功能：过滤age>20的人
