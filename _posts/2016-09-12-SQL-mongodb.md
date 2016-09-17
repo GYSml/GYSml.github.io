@@ -305,25 +305,29 @@ tags: SQL
 - 唯一索引  
   作用：唯一的键值不能插入
 
-
+  ```
     db.student.remove()
     db.student.ensureIndex({"name":1},{"unique":true})
+  ```
 
 - 组合索引
 
-
+  ```
     多条件查找：
     db.student.ensureIndex({"name":1,"birthday":1})
     db.student.ensureIndex({"birthday":1,"name":1})
+  ```
+  
+  - 使用getindexes查看生成的索引：
 
-使用getindexes查看生成的索引：
-
+  ```
     db.student.getIndexes()
     结果有：name_1_birthday_1、birthday_1_name_1
-    
-    不过查询优化器会选择最优的索引查询
+  ```
+  
+  不过查询优化器会选择最优的索引查询
 
-也可以使用hint方法强制执行
+  也可以使用hint方法强制执行
 
     db.student.find({"birthday":"1995-02-07","name":"gys"}).hint({"birthday":1,"name":1})
 
