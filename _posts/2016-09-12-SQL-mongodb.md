@@ -246,13 +246,13 @@ tags: SQL
 - 全部查询
 
   ```
-    var list=db.student.find();
-    遍历：
-    lsit.forEach(function(x){print(x.name);
-    })
-    while(list.hasNext()){
-        var dox = list.next();
-    }
+  var list=db.student.find();
+  遍历：
+  lsit.forEach(function(x){print(x.name);
+  })
+  while(list.hasNext()){
+      var dox = list.next();
+  }
   ```
 
    针对这样的操作，list其实并没有获取到person中的文档，而是申明一个“查询结构”，等我们需要的时候通过for或者next()一次性加载过来，然后让游标逐行读取，当我们枚举完了之后，游标销毁，之后我们在通过list获取时，发现没有数据返回了
