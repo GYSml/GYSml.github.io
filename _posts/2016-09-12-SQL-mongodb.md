@@ -160,14 +160,13 @@ tags: SQL
 - 聚合  
   常见的聚合操作：count，distinct，group，mapReduce
 
-
 - count
 
   ```
-    //统计表中行数
-    db.student.count()
-    //统计age=20的行数
-    db.student.count("age":20)
+   //统计表中行数
+   db.student.count()
+   //统计age=20的行数
+   db.student.count("age":20)
   ```
 
 - distinct  
