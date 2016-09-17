@@ -179,26 +179,28 @@ tags: SQL
 
 - group
 
-参数介绍：key:分组的key,这里指年龄
-          initial：每组都有一个初始化函数
-          $reduce:第一个参数为当前文档对象，第二个为上一次function操作的累计对象
-可选参数：condition:  这个就是过滤条件。
-finalize函数：每一组文档执行完后，多会触发此方法，那么在每组集合里面加上count也就是它的功能。
+  参数介绍：
+    key:分组的key,这里指年龄
+    initial：每组都有一个初始化函数
+    $reduce:第一个参数为当前文档对象，第二个为上一次function操作的累计对象
+  可选参数：
+    condition:  这个就是过滤条件。
+    finalize函数：每一组文档执行完后，多会触发此方法，那么在每组集合里面加上count也就是它的功能。
 
  ```
-    db.student.group({
-        "key":{"age":true},
-        "initial":{"student":[]},
-        "$reduce":function(cur,prev){
-            prev.student.push(cur,prev);
-        }
-        })
+   db.student.group({
+       "key":{"age":true},
+       "initial":{"student":[]},
+       "$reduce":function(cur,prev){
+           prev.student.push(cur,prev);
+      }
+    })
  ```
 
-增加功能：过滤age>20的人
-          有时student数组中数据多，加count标识
+   增加功能：过滤age>20的人
+      有时student数组中数据多，加count标识
 
-   ```
+  ```
     db.student.group({
         "key":{"age":true},
         "initial":{"student":[]},
