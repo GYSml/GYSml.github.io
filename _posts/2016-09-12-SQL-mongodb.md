@@ -18,11 +18,11 @@ tags: SQL
 - 给MongoDB指定文件夹db,用来存放MongoDB数据
 - 在cmd指定path路径
 
-```
-c:\Users\Administraror>D:
-D:\>cd mongodb\bin
-D:\mongodb\bin>mongod --dbpath=D:\mongpdb\db
-```
+  ```
+  c:\Users\Administraror>D:
+  D:\>cd mongodb\bin
+  D:\mongodb\bin>mongod --dbpath=D:\mongpdb\db
+  ```
 
 - 验证是否开启成功：默认端口27017，在浏览器输入http://localhost:27017/测试
 
@@ -40,20 +40,20 @@ D:\mongodb\bin>mongod --dbpath=D:\mongpdb\db
 
 - insert()
 
-```
-       一般写法:
-       db.student.insert({"name":"zhangsan","age":"19"})
-       db.student.insert({"name":"lisi","age":"20"})
-       js语法
-       var data={"name":"zhangsan","age":20,"address":{"province":"jiangxi","city":"nanchang"},"class":["Java","SQL"]}
-       db.student.insert(data)
-       data.name="lisi"
-       data.age=25
-       data.address={"province":"zhejiang","city":"hangzhou"}
-       data.class=["C","C++"]
-       db.student.insert(data)
-```
-    
+  ```
+  一般写法
+  db.student.insert({"name":"zhangsan","age":"19"})
+  db.student.insert({"name":"lisi","age":"20"})
+  js语法
+  var data={"name":"zhangsan","age":20,"address":{"province":"jiangxi","city":"nanchang"},"class":["Java","SQL"]}
+  db.student.insert(data)
+  data.name="lisi"
+  data.age=25
+  data.address={"province":"zhejiang","city":"hangzhou"}
+  data.class=["C","C++"]
+  db.student.insert(data)
+  ```
+
 - find()
 
   - 比较操作>=,>, <, <=, !=, =
@@ -95,8 +95,8 @@ D:\mongodb\bin>mongod --dbpath=D:\mongpdb\db
 - $where语句
 
   ```
-         find name='zhangsan'
-         db.student.find({$where:function(){return this.name=='zhangsan'}})
+  find name='zhangsan'
+  db.student.find({$where:function(){return this.name=='zhangsan'}})
   ```
 
 - update()
@@ -129,25 +129,30 @@ D:\mongodb\bin>mongod --dbpath=D:\mongpdb\db
 
   - upsert操作
 
-        如果没有查到，就在数据库里面新增一条
-        好处：避免在数据库里面判断是update还是add操作，单将update的第三个参数设为true即可。
+    如果没有查到，就在数据库里面新增一条
+    好处：避免在数据库里面判断是update还是add操作，单将update的第三个参数设为true即可。
 
-        `db.student.update({"name":"wangwu"},{$inc:{"age":17}},true)`
+    ```
+     db.student.update({"name":"wangwu"},{$inc:{"age":17}},true)
+    ```
     
-        增加新纪录： name:wangwu age:17
+    增加新纪录： name:wangwu age:17
 
   - 批量更新
 
-        如果匹配多条，默认的情况下只更新第一条，如果我们有批量更新在update的第四个参数中设为true即可
+    如果匹配多条，默认的情况下只更新第一条，如果我们有批量更新在update的第四个参数中设为true即可
 
-        `db.student.update({"name":"wangwu"},{$inc:{"age":19}},true，true)`
-​    
+    ```
+     db.student.update({"name":"wangwu"},{$inc:{"age":19}},true，true)
+    ```
 
 - remove()
 
     注意：remove()不带参数则删除所有数据，该操作为不可撤回操作
     
-   ` db.student.remove({"name:joe"});`
+  ```
+  db.student.remove({"name:joe"});
+  ```
 
 
 ## 高级操作
@@ -155,44 +160,47 @@ D:\mongodb\bin>mongod --dbpath=D:\mongpdb\db
 - 聚合  
   常见的聚合操作：count，distinct，group，mapReduce
 
-
 - count
 
-    ```
-  //统计表中行数
-  db.student.count()
-  //统计age=20的行数
-  db.student.count("age":20)
-    ```
+  ```
+   //统计表中行数
+   db.student.count()
+   //统计age=20的行数
+   db.student.count("age":20)
+  ```
 
 - distinct  
 
-    功能：指定了哪列，哪列就不能重复
+  功能：指定了哪列，哪列就不能重复
     
-    `db.student.distinct({"age"})`
+  ```
+    db.student.distinct({"age"})
+  ```
 
 - group
 
-参数介绍：key:分组的key,这里指年龄
-          initial：每组都有一个初始化函数
-          $reduce:第一个参数为当前文档对象，第二个为上一次function操作的累计对象
-可选参数：condition:  这个就是过滤条件。
-finalize函数：每一组文档执行完后，多会触发此方法，那么在每组集合里面加上count也就是它的功能。
-    
-    ```
-    db.student.group({
-        "key":{"age":true},
-        "initial":{"student":[]},
-        "$reduce":function(cur,prev){
-            prev.student.push(cur,prev);
-        }
-        })
-    ```
+  参数介绍：
+    key:分组的key,这里指年龄
+    initial：每组都有一个初始化函数
+    $reduce:第一个参数为当前文档对象，第二个为上一次function操作的累计对象
+  可选参数：
+    condition:  这个就是过滤条件。
+    finalize函数：每一组文档执行完后，多会触发此方法，那么在每组集合里面加上count也就是它的功能。
 
-增加功能：过滤age>20的人
-          有时student数组中数据多，加count标识
-   
-    ```
+  ```
+    db.student.group({
+       "key":{"age":true},
+       "initial":{"student":[]},
+       "$reduce":function(cur,prev){
+           prev.student.push(cur,prev);
+      }
+    })
+  ```
+
+   增加功能：过滤age>20的人
+      有时student数组中数据多，加count标识
+
+  ```
     db.student.group({
         "key":{"age":true},
         "initial":{"student":[]},
@@ -203,127 +211,136 @@ finalize函数：每一组文档执行完后，多会触发此方法，那么在
             prev.count = prev.person.length;
         },
         "condition":{"age":{$lt:25}}
-        })
-    ```
+    })
+  ```
+    
 - mapReduce
 
-    1.map:称为映射函数，里面调用emit(key,value),按照key进行映射分组
-    2.reduce：称为简化函数，会对map分组后的数据进行简化，reduce(key,value)中的key就是emit中的key，value就是emit分组后的emit(value)的集合
-    3.mapReduce：执行函数，参数为map,reduce和可选参数
+  - map:称为映射函数，里面调用emit(key,value),按照key进行映射分组
+  - reduce：称为简化函数，会对map分组后的数据进行简化，reduce(key,value)中的key就是emit中的key，value就是emit分组后的emit(value)的集合
+  - mapReduce：执行函数，参数为map,reduce和可选参数
 
     ```
-    >map
-    function(){
-        emit(this.name,{count:1});
-    }
-    >reduce
-    function(){
-        var result = {count:0};
-        for(var i=0;i < value.length;i++){
-            result.count += value[i].count;
-        }
-        return result;
-    }
-    >db.student.mapReduce(map,reduce,{"out":"collect_value"})
+     ->map
+      function(){
+          emit(this.name,{count:1});
+      }
+     ->reduce
+      function(){
+          var result = {count:0};
+          for(var i=0;i < value.length;i++){
+              result.count += value[i].count;
+          }
+          return result;
+      }
+      ->db.student.mapReduce(map,reduce,{"out":"collect_value"})
     ```
     
-看collect_value中的结果：
+     看collect_value中的结果：
 
-    db.collect_value.find()
-
-
-
+    ```
+      db.collect_value.find()
+    ```
+    
 - 游标
 - 全部查询
 
-    ```
-    var list=db.student.find();
-    遍历：
-    lsit.forEach(function(x){print(x.name);
-    })
-    while(list.hasNext()){
-        var dox = list.next();
-    }
-    ```
+  ```
+  var list=db.student.find();
+  遍历：
+  lsit.forEach(function(x){print(x.name);
+  })
+  while(list.hasNext()){
+      var dox = list.next();
+  }
+  ```
 
-针对这样的操作，list其实并没有获取到person中的文档，而是申明一个“查询结构”，等我们需要的时候通过for或者next()一次性加载过来，然后让游标逐行读取，当我们枚举完了之后，游标销毁，之后我们在通过list获取时，发现没有数据返回了
+   针对这样的操作，list其实并没有获取到person中的文档，而是申明一个“查询结构”，等我们需要的时候通过for或者next()一次性加载过来，然后让游标逐行读取，当我们枚举完了之后，游标销毁，之后我们在通过list获取时，发现没有数据返回了
 
 ​    
 
 - 分页、排序查询
 
-​    
-limit是限制游标返回的数量，指定了上限；
-skip是忽略前面的部分文档，如果文档总数量小于忽略的数量，则返回空集合；
-sort对得到的子集合进行排序，可以按照多个键进行正反排序
+  - limit是限制游标返回的数量，指定了上限；
+  - skip是忽略前面的部分文档，如果文档总数量小于忽略的数量，则返回空集合；
+  - sort对得到的子集合进行排序，可以按照多个键进行正反排序
 
+  ```
     var single=db.person.find().sort({"name",1}).skip(2).limit(2);
-
+  ```
 
 ## 索引
 
 - 插入1w条数据
 
-    ```
-    db.student.remove();
-    for(var i=0;i<10000;i++)
-        db.student.insert({"name":"abc"+i,"age":i});
-    ```
-    
+  ```
+   db.student.remove();
+   for(var i=0;i<10000;i++)
+       db.student.insert({"name":"abc"+i,"age":i});
+  ```
+
 - 性能分析函数(explian)
   在这里没有建立索引，直接查询abc10000的姓名
 
-
-    db.student.find({"name":"abc"+10000}).explain();
-
-参数介绍：
-    cursor:BasicCursor表示表查找，也就是顺序查找
-    nscanned:表示数据库浏览文档的个数(10000)
-    n:表示最终返回一个文档
-    milis:总共耗时114ms
+  ```
+   db.student.find({"name":"abc"+10000}).explain();
+  ```
+  
+  - 参数介绍：
+    - cursor:BasicCursor表示表查找，也就是顺序查找
+    - nscanned:表示数据库浏览文档的个数(10000)
+    - n:表示最终返回一个文档
+    - milis:总共耗时114ms
 
 - 建立索引
 
-
+  ```
     db.student.ensureIndex({"name":1})
     db.student.find({"name"+10000}).explain()
-    
-    cursor:BTreeCursor ,MongDB采用B树的结构存放索引
-    nscanned:数据库只浏览一个
-    n：直接定位返回
+  ```
+    - cursor:BTreeCursor ,MongDB采用B树的结构存放索引
+    - nscanned:数据库只浏览一个
+    - n：直接定位返回
 
 - 唯一索引  
   作用：唯一的键值不能插入
 
-
+  ```
     db.student.remove()
     db.student.ensureIndex({"name":1},{"unique":true})
+  ```
 
 - 组合索引
 
-
+  ```
     多条件查找：
     db.student.ensureIndex({"name":1,"birthday":1})
     db.student.ensureIndex({"birthday":1,"name":1})
+  ```
+  
+  - 使用getindexes查看生成的索引：
 
-使用getindexes查看生成的索引：
-
-    db.student.getIndexes()
-    结果有：name_1_birthday_1、birthday_1_name_1
-    
+    ```
+      db.student.getIndexes()
+      结果有：name_1_birthday_1、birthday_1_name_1
+    ```
+  
     不过查询优化器会选择最优的索引查询
-
-也可以使用hint方法强制执行
-
-    db.student.find({"birthday":"1995-02-07","name":"gys"}).hint({"birthday":1,"name":1})
-
+    也可以使用hint方法强制执行
+    
+    ```
+      db.student.find({"birthday":"1995-02-07","name":"gys"}).hint({"birthday":1,"name":1})
+    ```
+    
 - 删除索引
-  查看索引
 
+  - 查看索引
 
+  ```
     db.student.getIndexes()
     db.student.dropIndexes("name_1");
-
+  ```
+  
 ## 主从复制
 
 - 原理
