@@ -220,27 +220,25 @@ tags: SQL
   - reduce：称为简化函数，会对map分组后的数据进行简化，reduce(key,value)中的key就是emit中的key，value就是emit分组后的emit(value)的集合
   - mapReduce：执行函数，参数为map,reduce和可选参数
 
-  ```
-   ->map
-    function(){
-        emit(this.name,{count:1});
-    }
-   ->reduce
-    function(){
-        var result = {count:0};
-        for(var i=0;i < value.length;i++){
-            result.count += value[i].count;
-        }
-        return result;
-    }
-    ->db.student.mapReduce(map,reduce,{"out":"collect_value"})
-  ```
+    ```
+     ->map
+      function(){
+          emit(this.name,{count:1});
+      }
+     ->reduce
+      function(){
+          var result = {count:0};
+          for(var i=0;i < value.length;i++){
+              result.count += value[i].count;
+          }
+          return result;
+      }
+      ->db.student.mapReduce(map,reduce,{"out":"collect_value"})
+    ```
     
-看collect_value中的结果：
+     看collect_value中的结果：
 
-    db.collect_value.find()
-
-
+      db.collect_value.find()
 
 - 游标
 - 全部查询
