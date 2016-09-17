@@ -45,7 +45,7 @@ tags: lexical_cast
 
 ## 数值→字符串
 
-- sprintf()函数：
+- sprintf()函数
 
   ```
     char item[100];
@@ -54,7 +54,7 @@ tags: lexical_cast
 
 - C++标准字符串string:
 
-  ```
+```
     #include <boost/lexical_cast.hpp>
     #include <string>
     #include <iostream>
@@ -66,7 +66,7 @@ tags: lexical_cast
             std::cout<<s<<std::endl;
             return 0;
     }
-  ```
+```
 
 ## 异常
 
