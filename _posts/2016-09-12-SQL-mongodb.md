@@ -163,18 +163,20 @@ tags: SQL
 
 - count
 
-    ```
-  //统计表中行数
-  db.student.count()
-  //统计age=20的行数
-  db.student.count("age":20)
-    ```
+  ```
+    //统计表中行数
+    db.student.count()
+    //统计age=20的行数
+    db.student.count("age":20)
+  ```
 
 - distinct  
 
-    功能：指定了哪列，哪列就不能重复
+  功能：指定了哪列，哪列就不能重复
     
-    `db.student.distinct({"age"})`
+  ```
+    db.student.distinct({"age"})
+  ```
 
 - group
 
