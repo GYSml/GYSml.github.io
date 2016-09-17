@@ -140,11 +140,11 @@ tags: SQL
 
   - 批量更新
 
-        如果匹配多条，默认的情况下只更新第一条，如果我们有批量更新在update的第四个参数中设为true即可
+  如果匹配多条，默认的情况下只更新第一条，如果我们有批量更新在update的第四个参数中设为true即可
 
-        ```
-        db.student.update({"name":"wangwu"},{$inc:{"age":19}},true，true)
-        ```
+    ```
+    db.student.update({"name":"wangwu"},{$inc:{"age":19}},true，true)
+    ```
 ​    
 
 - remove()
