@@ -18,13 +18,11 @@ tags: SQL
 - 给MongoDB指定文件夹db,用来存放MongoDB数据
 - 在cmd指定path路径
 
-
    ```
       c:\Users\Administraror>D:
       D:\>cd mongodb\bin
       D:\mongodb\bin>mongod --dbpath=D:\mongpdb\db
    ```
-
 
 - 验证是否开启成功：默认端口27017，在浏览器输入http://localhost:27017/测试
 
@@ -41,21 +39,21 @@ tags: SQL
   注意：下次用同样方式启动时，在db文件下有lock file文件，删除即可
 
 - insert()
-  
+
    ```
-          一般写法:
-          db.student.insert({"name":"zhangsan","age":"19"})
-          db.student.insert({"name":"lisi","age":"20"})
-          js语法
-          var data={"name":"zhangsan","age":20,"address":{"province":"jiangxi","city":"nanchang"},"class":["Java","SQL"]}
-          db.student.insert(data)
-          data.name="lisi"
-          data.age=25
-          data.address={"province":"zhejiang","city":"hangzhou"}
-          data.class=["C","C++"]
-          db.student.insert(data)
+      一般写法:
+      db.student.insert({"name":"zhangsan","age":"19"})
+      db.student.insert({"name":"lisi","age":"20"})
+      js语法
+      var data={"name":"zhangsan","age":20,"address":{"province":"jiangxi","city":"nanchang"},"class":["Java","SQL"]}
+      db.student.insert(data)
+      data.name="lisi"
+      data.age=25
+      data.address={"province":"zhejiang","city":"hangzhou"}
+      data.class=["C","C++"]
+      db.student.insert(data)
    ```
-    
+
 - find()
 
   - 比较操作>=,>, <, <=, !=, =
