@@ -178,8 +178,8 @@ D:\mongodb\bin>mongod --dbpath=D:\mongpdb\db
           $reduce:第一个参数为当前文档对象，第二个为上一次function操作的累计对象
 可选参数：condition:  这个就是过滤条件。
 finalize函数：每一组文档执行完后，多会触发此方法，那么在每组集合里面加上count也就是它的功能。
-    
-    ```
+
+ ```
     db.student.group({
         "key":{"age":true},
         "initial":{"student":[]},
@@ -187,12 +187,12 @@ finalize函数：每一组文档执行完后，多会触发此方法，那么在
             prev.student.push(cur,prev);
         }
         })
-    ```
+ ```
 
 增加功能：过滤age>20的人
           有时student数组中数据多，加count标识
-   
-    ```
+
+   ```
     db.student.group({
         "key":{"age":true},
         "initial":{"student":[]},
@@ -205,18 +205,19 @@ finalize函数：每一组文档执行完后，多会触发此方法，那么在
         "condition":{"age":{$lt:25}}
         })
     ```
+    
 - mapReduce
 
     1.map:称为映射函数，里面调用emit(key,value),按照key进行映射分组
     2.reduce：称为简化函数，会对map分组后的数据进行简化，reduce(key,value)中的key就是emit中的key，value就是emit分组后的emit(value)的集合
     3.mapReduce：执行函数，参数为map,reduce和可选参数
 
-    ```
-    >map
+   ```
+   ->map
     function(){
         emit(this.name,{count:1});
     }
-    >reduce
+   ->reduce
     function(){
         var result = {count:0};
         for(var i=0;i < value.length;i++){
@@ -224,8 +225,8 @@ finalize函数：每一组文档执行完后，多会触发此方法，那么在
         }
         return result;
     }
-    >db.student.mapReduce(map,reduce,{"out":"collect_value"})
-    ```
+    ->db.student.mapReduce(map,reduce,{"out":"collect_value"})
+   ```
     
 看collect_value中的结果：
 
