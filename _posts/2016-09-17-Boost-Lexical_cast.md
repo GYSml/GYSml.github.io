@@ -1,10 +1,18 @@
-## Boost入门
+---
+author: GuoYS
+layout: post
+title:  "Boost组件之lexical_cast"
+date:   2016-09-17 10:38:45 +0800
+categories: Boost
+tags: lexical_cast
+---
+* content
+{:toc}
+
+  在C++中Boost里面的lexical_cast实现了数值与字符串之间的转换，使其更加方便与简洁
 
 
-
-##   Boost组件lexical_cast
-
-- #### 字符串→数值
+## 字符串→数值
 
   - 如何将字符串"123"转换为int类型整数123？答案是，用标准C的库函数atoi
   - 如果要转换为long类型呢？标准C的库函数atol
