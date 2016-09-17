@@ -273,18 +273,19 @@ tags: SQL
 
 - 插入1w条数据
 
-    ```
-    db.student.remove();
-    for(var i=0;i<10000;i++)
-        db.student.insert({"name":"abc"+i,"age":i});
-    ```
+  ```
+  db.student.remove();
+  for(var i=0;i<10000;i++)
+      db.student.insert({"name":"abc"+i,"age":i});
+  ```
     
 - 性能分析函数(explian)
   在这里没有建立索引，直接查询abc10000的姓名
 
-
-    db.student.find({"name":"abc"+10000}).explain();
-
+  ```
+   db.student.find({"name":"abc"+10000}).explain();
+  ```
+  
 参数介绍：
     cursor:BasicCursor表示表查找，也就是顺序查找
     nscanned:表示数据库浏览文档的个数(10000)
