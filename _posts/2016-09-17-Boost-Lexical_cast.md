@@ -41,10 +41,9 @@ C++:
   }
   ```
 
-  ​
 
 
-##  数值→字符串
+## 数值→字符串
 
   sprintf()函数：
 
@@ -53,7 +52,6 @@ C++:
   sprintf(item,"%s",12345.678);
   ```
 
-  ​
   C++标准字符串string:
 
   ```
@@ -108,7 +106,7 @@ C++:
     int m = boost::lexcal_cast<int>("123456");
     ```
 
-    ​等价：
+    等价：
     ```
     int item;
     std::stringstream ss;
@@ -136,5 +134,5 @@ C++:
      interpreter.precision(std::numeric_limits<Source>::digits10);
     ```
 
-    ​
+
 
