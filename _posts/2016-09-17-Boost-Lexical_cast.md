@@ -54,19 +54,19 @@ tags: lexical_cast
 
 - C++标准字符串string:
 
-```
-    #include <boost/lexical_cast.hpp>
-    #include <string>
-    #include <iostream>
-    int main()
-    {
-            using std::string;
-            const double d = 123.12;
-            string s = boost::lexical_cast<string>(d);
-            std::cout<<s<<std::endl;
-            return 0;
-    }
-```
+  ```
+      #include <boost/lexical_cast.hpp>
+      #include <string>
+      #include <iostream>
+      int main()
+      {
+              using std::string;
+              const double d = 123.12;
+              string s = boost::lexical_cast<string>(d);
+              std::cout<<s<<std::endl;
+              return 0;
+      }
+  ```
 
 ## 异常
 
