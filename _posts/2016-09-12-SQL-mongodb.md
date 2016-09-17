@@ -132,9 +132,9 @@ tags: SQL
         如果没有查到，就在数据库里面新增一条
         好处：避免在数据库里面判断是update还是add操作，单将update的第三个参数设为true即可。
 
-        ```
-        db.student.update({"name":"wangwu"},{$inc:{"age":17}},true)
-        ```
+  ```
+  db.student.update({"name":"wangwu"},{$inc:{"age":17}},true)
+  ```
     
         增加新纪录： name:wangwu age:17
 
@@ -142,10 +142,9 @@ tags: SQL
 
   如果匹配多条，默认的情况下只更新第一条，如果我们有批量更新在update的第四个参数中设为true即可
 
-    ```
-    db.student.update({"name":"wangwu"},{$inc:{"age":19}},true，true)
-    ```
-​    
+  ```
+  db.student.update({"name":"wangwu"},{$inc:{"age":19}},true，true)
+  ```
 
 - remove()
 
