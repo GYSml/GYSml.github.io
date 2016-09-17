@@ -27,7 +27,7 @@ tags: lexical_cast
 
 C++:
 
-  ```
+```
     #include <boost/lexical_cast.hpp>
     #include <iostream>
     int main()
@@ -39,7 +39,7 @@ C++:
             std::cout<<b<<std::endl;
             return 0;
     }
-  ```
+```
 
 
 
