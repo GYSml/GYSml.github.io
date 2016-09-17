@@ -129,14 +129,14 @@ tags: SQL
 
   - upsert操作
 
-        如果没有查到，就在数据库里面新增一条
-        好处：避免在数据库里面判断是update还是add操作，单将update的第三个参数设为true即可。
+  如果没有查到，就在数据库里面新增一条
+  好处：避免在数据库里面判断是update还是add操作，单将update的第三个参数设为true即可。
 
   ```
   db.student.update({"name":"wangwu"},{$inc:{"age":17}},true)
   ```
     
-        增加新纪录： name:wangwu age:17
+  增加新纪录： name:wangwu age:17
 
   - 批量更新
 
