@@ -12,7 +12,7 @@ tags: pointer
   关于boost中智能指针特点及Demo实例
 
 
-#  Boost智能指针
+
 
 ## shared_ptr< T >
 
