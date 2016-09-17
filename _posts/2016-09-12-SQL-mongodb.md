@@ -211,16 +211,16 @@ tags: SQL
             prev.count = prev.person.length;
         },
         "condition":{"age":{$lt:25}}
-        })
-    ```
+    })
+  ```
     
 - mapReduce
 
-    1.map:称为映射函数，里面调用emit(key,value),按照key进行映射分组
-    2.reduce：称为简化函数，会对map分组后的数据进行简化，reduce(key,value)中的key就是emit中的key，value就是emit分组后的emit(value)的集合
-    3.mapReduce：执行函数，参数为map,reduce和可选参数
+  - map:称为映射函数，里面调用emit(key,value),按照key进行映射分组
+  - reduce：称为简化函数，会对map分组后的数据进行简化，reduce(key,value)中的key就是emit中的key，value就是emit分组后的emit(value)的集合
+  - mapReduce：执行函数，参数为map,reduce和可选参数
 
-   ```
+  ```
    ->map
     function(){
         emit(this.name,{count:1});
@@ -234,7 +234,7 @@ tags: SQL
         return result;
     }
     ->db.student.mapReduce(map,reduce,{"out":"collect_value"})
-   ```
+  ```
     
 看collect_value中的结果：
 
