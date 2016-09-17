@@ -1,3 +1,17 @@
+---
+author: GuoYS
+layout: post
+title:  "Boost之智能指针"
+date:   2016-09-17 22:48:25 +0800
+categories: Boost
+tags: pointer
+---
+* content
+{:toc}
+
+  关于boost中智能指针特点及Demo实例
+
+
 #  Boost智能指针
 
 ## shared_ptr< T >
