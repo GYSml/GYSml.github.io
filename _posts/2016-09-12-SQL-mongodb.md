@@ -333,12 +333,13 @@ tags: SQL
     ```
     
 - 删除索引
-  查看索引
+  - 查看索引
 
-
+  ```
     db.student.getIndexes()
     db.student.dropIndexes("name_1");
-
+  ```
+  
 ## 主从复制
 
 - 原理
